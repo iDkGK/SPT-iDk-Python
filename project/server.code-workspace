@@ -1,0 +1,128 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "debug",
+                "type": "python",
+                "request": "launch",
+                "preLaunchTask": "bypass",
+                "postDebugTask": "exit",
+                "program": "${workspaceFolder}/src/server.py",
+                "console": "integratedTerminal",
+                "args": [ "test-debug" ],
+                "justMyCode": true
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "build",
+                "type": "shell",
+                "command": "python ide/build.py",
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "clean",
+                "type": "shell",
+                "command": "python ide/clean.py",
+                "group": {
+                    "kind": "build",
+                    "isDefault": false
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "setup venv",
+                "type": "shell",
+                "dependsOrder": "sequence",
+                "dependsOn": [
+                    "setup",
+                    "bypass",
+                    "init",
+                    "exit"
+                ],
+                "group": {
+                    "kind": "none",
+                    "isDefault": true
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "reset venv",
+                "type": "shell",
+                "dependsOrder": "sequence",
+                "dependsOn": [
+                    "remove",
+                    "setup",
+                    "bypass",
+                    "init",
+                    "exit"
+                ],
+                "group": {
+                    "kind": "none",
+                    "isDefault": true
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "unset venv",
+                "type": "shell",
+                "dependsOrder": "sequence",
+                "dependsOn": [
+                    "remove",
+                    "exit"
+                ],
+                "group": {
+                    "kind": "none",
+                    "isDefault": true
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "remove",
+                "type": "shell",
+                "command": "rm -r .venv/",
+                "problemMatcher": []
+            },
+            {
+                "label": "setup",
+                "type": "shell",
+                "command": "python -m venv .venv",
+                "problemMatcher": []
+            },
+            {
+                "label": "bypass",
+                "type": "shell",
+                "command": "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser",
+                "problemMatcher": []
+            },
+            {
+                "label": "init",
+                "type": "shell",
+                "command": ".venv/scripts/activate;python -m pip install --upgrade pip;pip install -r requirements.txt",
+                "problemMatcher": []
+            },
+            {
+                "label": "exit",
+                "type": "shell",
+                "command": "Set-ExecutionPolicy -ExecutionPolicy Undefined -Scope CurrentUser",
+                "problemMatcher": []
+            }
+        ]
+    },
+    "settings": {
+        "window.title": "SPT-iDk Server"
+    }
+}
