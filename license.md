@@ -2,8 +2,7 @@
 
 Copyright (c) 2022 iDkGK. All rights reserved.  
 
-Developed by: iDkGK  
-              SPT-iDk
+Developed by: iDkGK
 
 Permission is hereby granted, free of charge, to any person obtaining a copy  
 of this software and associated documentation files (the "Software"), to deal  
@@ -19,7 +18,7 @@ this list of conditions and the following disclaimers.
 this list of conditions and the following disclaimers in the documentation  
 and/or other materials provided with the distribution.  
 
-* Neither the names of iDkGK, SPT-iDk, nor the names of  
+* Neither the names of iDkGK, nor the names of  
 its contributors may be used to endorse or promote products derived from  
 this Software without specific prior written permission.  
 
