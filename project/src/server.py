@@ -441,7 +441,7 @@ class server():
             def connect(ssid, url, body, result, resp):
                 return httputil.getnobody({
                     'backendUrl': httpserver.getbackendurl(),
-                    'name': watermarkutil.name + watermarkutil.version,
+                    'name': ' '.join([watermarkutil.name, watermarkutil.version]),
                     'editions': list(databaseserver.tables['templates']['profiles'].keys())
                 })
 
@@ -1210,6 +1210,10 @@ class server():
             def init():
                 pass
 
+            @staticmethod
+            def adddialoguemessage(dialogueid, message, ssid, items):
+                pass
+
         ################################****################################
         class gamecontroller:
             @staticmethod
@@ -1377,6 +1381,10 @@ class server():
                 pass
 
             @staticmethod
+            def ismoneytpl(tpl):
+                return tpl in ['569668774bdc2da2298b4568', '5696686a4bdc2da3298b456a', '5449016a4bdc2d6f028b456f']
+
+            @staticmethod
             def fromrub(price, currency):
                 return round(price / handbookcontroller.gettemplateprice(currency))
 
@@ -1469,6 +1477,15 @@ class server():
             @staticmethod
             def init():
                 pass
+
+            @staticmethod
+            def returnitems(ssid, items):
+                message = {
+                    'text': databaseserver['tables']['locales']['global']['ch']['mail']['5bdac06e86f774296f5a19c5'],
+                    'type': 13,
+                    'maxStorageTime': questconfig.redeemTime * 3600
+                }
+                dialoguecontroller.adddialoguemessage('5ac3b934156ae10c4430e83c', message, ssid, items)
 
         ################################****################################
         class repaircontroller:
@@ -1746,12 +1763,12 @@ class server():
                 for mod in mods:
                     if modloader.validatemod(mod):
                         modinfo = modloader.getmodinfo(modloader.getmodinfopath(mod))
-                        imported = im.SourceFileLoader(mod, modloader.getmodpath(mod) + modinfo['modentry']).load_module()
+                        imported = im.SourceFileLoader(mod, ''.join([modloader.getmodpath(mod), modinfo['modentry']])).load_module()
                         if not hasattr(imported, 'mod'):
-                            logutil.error('MOD ' + mod + ' 加载失败：缺少入口类 mod')
+                            logutil.error(' '.join(['MOD', mod, '加载失败：缺少入口类 mod']))
                             continue
                         if not hasattr(imported.mod, 'init'):
-                            logutil.error('MOD ' + mod + ' 加载失败：缺少初始化方法 init')
+                            logutil.error(' '.join(['MOD', mod, '加载失败：缺少初始化方法 init']))
                             continue
                         modloader.modclasses[mod] = imported.mod
 
@@ -1767,23 +1784,23 @@ class server():
             def validatemod(mod):
                 infopath = modloader.getmodinfopath(mod)
                 if not filesystemutil.exists(infopath):
-                    logutil.error('MOD ' + mod + ' 加载失败：缺少MOD信息文件 ' + modloader.infofile)
+                    logutil.error(' '.join(['MOD', mod, '加载失败：缺少MOD信息文件 ', modloader.infofile]))
                     return False
                 infolist = ['modname', 'modauthor', 'modentry', 'modversion', 'serverversion', 'license']
                 modinfo = modloader.getmodinfo(infopath)
                 for attr in infolist:
                     if not attr in modinfo:
-                        logutil.error('MOD ' + mod + ' 加载失败：在 ' + modloader.infofile + ' 中缺少 ' + attr)
+                        logutil.error(' '.join(['MOD', mod, '加载失败：在', modloader.infofile, '中缺少', attr]))
                         return False
                 entry = modinfo['modentry']
                 if filesystemutil.getextsion(entry) != 'py':
-                    logutil.error('MOD ' + mod + ' 加载失败：入口 ' + entry + ' 非Py文件 ')
+                    logutil.error(' '.join(['MOD', mod, '加载失败：入口', entry, '非Py文件']))
                     return False
-                if not filesystemutil.exists(modloader.getmodpath(mod) + entry):
-                    logutil.error('MOD ' + mod + ' 加载失败：入口 ' + entry + ' 文件不存在 ')
+                if not filesystemutil.exists(''.join([modloader.getmodpath(mod), entry])):
+                    logutil.error(' '.join(['MOD', mod, '加载失败：入口', entry, '文件不存在']))
                     return False
                 if modinfo['serverversion'] != watermarkutil.version:
-                    logutil.error('MOD ' + mod + ' 加载失败：与服务端版本不兼容')
+                    logutil.error(' '.join(['MOD', mod, '加载失败：与服务端版本不兼容']))
                     return False
                 return True
 
@@ -1793,11 +1810,11 @@ class server():
 
             @staticmethod
             def getmodinfopath(mod):
-                return modloader.getmodpath(mod) + modloader.infofile
+                return ''.join([modloader.getmodpath(mod), modloader.infofile])
 
             @staticmethod
             def getmodpath(mod):
-                return modloader.moddir + mod + '/'
+                return ''.join([modloader.moddir, mod, '/'])
 
     class routers:
         ################################****################################
@@ -1833,7 +1850,7 @@ class server():
             @staticmethod
             def init():
                 logutil.info('加载图片资源…')
-                imagerouter.onroute = databaseutil.loadimages(databaseutil.dbdir + 'images/')
+                imagerouter.onroute = databaseutil.loadimages(''.join([databaseutil.dbdir, 'images/']))
 
             @staticmethod
             def sendimage(ssid, url, body, result, resp):
@@ -1926,7 +1943,7 @@ class server():
                 hostandport = httpserver.gethostport()
                 backendserver = serverutil.wshttpserver(hostandport, serverutil.wshttphandler)
                 backendserver.start()
-                logutil.success('服务器已开启，监听端口' + str(hostandport[1]))
+                logutil.success(' '.join(['服务器已开启，监听端口', str(hostandport[1])]))
 
             @staticmethod
             def gethostport():
@@ -1937,7 +1954,7 @@ class server():
             @staticmethod
             def getbackendurl():
                 hostandport = httpserver.gethostport()
-                return 'http://' + hostandport[0] + ':' + str(hostandport[1])
+                return ''.join(['http://', hostandport[0], ':', str(hostandport[1])])
 
         ################################****################################
         class ragfairserver:
@@ -1946,6 +1963,7 @@ class server():
             traders = {}
             categories = {}
             linkeditems = {}
+            requireditems = {}
             staticprices = {}
             dynamicprices = {}
 
@@ -1956,18 +1974,18 @@ class server():
                 ragfairserver.generatedynamicprices()
                 ragfairserver.generatedynamicoffers()
                 ragfairserver.addtraders()
-                #ragfairserver.update()
+                ragfairserver.update()
 
             @staticmethod
             def buildlinkeditems():
                 for item in list(databaseserver.tables['templates']['items'].values()):
-                    itemlinkedset = ragfairserver.getlinkeditems(item['_id'])
+                    ragfairserver.getlinkeditems(item['_id'])
                     slots = ragfairserver.getfilters(item, 'Slots')
                     chambers = ragfairserver.getfilters(item, 'Chambers')
                     cartridges = ragfairserver.getfilters(item, 'Cartridges')
-                    ragfairserver.applylinkeditems(item, slots, itemlinkedset)
-                    ragfairserver.applylinkeditems(item, chambers, itemlinkedset)
-                    ragfairserver.applylinkeditems(item, cartridges, itemlinkedset)
+                    ragfairserver.applylinkeditems(item, slots)
+                    ragfairserver.applylinkeditems(item, chambers)
+                    ragfairserver.applylinkeditems(item, cartridges)
 
             @staticmethod
             def getlinkeditems(id):
@@ -1976,9 +1994,8 @@ class server():
                 return ragfairserver.linkeditems[id]
 
             @staticmethod
-            def applylinkeditems(item, items, set):
+            def applylinkeditems(item, items):
                 for linkeditemid in items:
-                    set.add(linkeditemid)
                     ragfairserver.getlinkeditems(linkeditemid).add(item['_id'])
 
             @staticmethod
@@ -2086,7 +2103,7 @@ class server():
             def calculatedynamicstackcount(tpl, ispreset):
                 valid, template = itemhelper.getitem(tpl)
                 if not valid:
-                    raise 'Item with tpl ' + tpl + ' not found. Unable to generate a dynamic stack count.'
+                    raise ' '.join(['未找到TPL为', tpl, '的物品，无法为其生成随机数量'])
                 if ispreset or itemhelper.doesitemorparentsidmatch(template['_id'], ragfairconfig.dynamic['showAsSingleStack']):
                     return 1
                 if not 'StackMaxSize' in template['_props'] or template['_props']['StackMaxSize'] == 1:
@@ -2180,7 +2197,7 @@ class server():
             def getweaponpresetprice(item, items, price):
                 presets = presetcontroller.getpresets(item['_tpl'])
                 if len(presets) == 0:
-                    logutil.warning('物品 ' + item['_tpl'] + ' 没有预设')
+                    logutil.warning(' '.join(['物品', item['_tpl'], '没有预设']))
                     return price
                 defaultpreset = list(filter(lambda i: '_encyclopedia' in i, presets))
                 if len(defaultpreset) == 0:
@@ -2334,6 +2351,48 @@ class server():
                 ragfairserver.buildrequireditemtable()
 
             @staticmethod
+            def buildrequireditemtable():
+                for offer in ragfairserver.offers:
+                    for requirement in offer['requirements']:
+                        requireditemtpl = requirement['_tpl']
+                        if paymentcontroller.ismoneytpl(requireditemtpl):
+                            continue
+                        ragfairserver.getrequireditems(requireditemtpl)
+                        ragfairserver.applyrequireditems(requireditemtpl, offer)
+
+            @staticmethod
+            def getrequireditems(tpl):
+                if not tpl in ragfairserver.requireditems:
+                    ragfairserver.requireditems[tpl] = set()
+                return ragfairserver.requireditems[tpl]
+
+            @staticmethod
+            def applyrequireditems(tpl, offer):
+                ragfairserver.getrequireditems(tpl).add(offer)
+
+            @staticmethod
+            def isexpired(offer, time):
+                return offer['endTime'] < time or offer['items'][0]['upd']['StackObjectsCount'] < 1
+
+            @staticmethod
+            def generatetraderoffers(trader):
+                ragfairserver.offers = list(filter(lambda o: o['user']['id'] != trader, ragfairserver.offers))
+                time = timeutil.gettimestamp()
+                assort = databaseserver.tables['traders'][trader]['assort']
+                for item in assort['items']:
+                    if item['slotId'] != 'hideout':
+                        continue
+                    ispreset = presetcontroller.ispreset(item['_id'])
+                    if ispreset:
+                        items = ragfairserver.getpresetitems(item)
+                    else:
+                        items = [*[item], *itemhelper.findandreturnchildrenbyassort(item['_id'], assort['items'])]
+                    barterscheme = assort['barter_scheme'][item['_id']][0]
+                    loyallevel = assort['loyal_level_items'][item['_id']]
+                    price = ragfairserver.getbarterprice(barterscheme)
+                    ragfairserver.createoffer(trader, time, items, barterscheme, loyallevel, price)
+
+            @staticmethod
             def addplayeroffers():
                 pass
 
@@ -2345,7 +2404,7 @@ class server():
                 profile = profilecontroller.getprofilebypmcid(offer['user']['id'])
                 for index in range(0, offercount + 1):
                     if index == offercount:
-                        logutil.warning('未找到ID为 ' + offer['_id'] + ' 的报价')
+                        logutil.warning(' '.join(['未找到ID为', offer['_id'], '的报价']))
                         return httputil.appenderror(itemeventrouter.getresult(profile['aid']), '报价不存在', '错误')
                     if profile['RagfairInfo']['offers'][index]['_id'] == offer['_id']:
                         break
@@ -2357,7 +2416,7 @@ class server():
                 offercount = len(ragfairserver.offers)
                 for index in range(0, offercount + 1):
                     if index == offercount:
-                        logutil.warning('未找到ID为 ' + offer['_id'] + ' 的报价')
+                        logutil.warning(' '.join(['未找到ID为', offer['_id'], '的报价']))
                     if ragfairserver.offers[index]['_id'] == offer['_id']:
                         break
                 del ragfairserver.offers[index]
@@ -2388,7 +2447,7 @@ class server():
 
             @staticmethod
             def loadprofile(ssid):
-                profile = saveserver.profilesdir + ssid + '.json'
+                profile = ''.join([saveserver.profilesdir, ssid, '.json'])
                 if filesystemutil.exists(profile):
                     saveserver.profiles[ssid] = jsonutil.parse(filesystemutil.readfile(profile))
                 for function in saveserver.initfunctions:
@@ -2396,7 +2455,7 @@ class server():
 
             @staticmethod
             def saveprofile(ssid):
-                profile = saveserver.profilesdir + ssid + '.json'
+                profile = ''.join([saveserver.profilesdir, ssid, '.json'])
                 jsonprofile = jsonutil.unparse(saveserver.profiles[ssid], True)
                 jsonprofilemd5 = hashutil.generatemd5(jsonprofile)
                 if not ssid in saveserver.profilemd5 or saveserver.profilemd5[ssid] != jsonprofilemd5:
@@ -2429,7 +2488,7 @@ class server():
                     if success:
                         initializer.updlastruntime[function] = timeutil.gettimestamp()
                     if success == None and timesincelastrun % 300 == 0:
-                        logutil.error('定时事件 ' + function + ' 执行失败')
+                        logutil.error(' '.join(['定时事件', function, '执行失败']))
 
         ################################****################################
         class databaseutil:
@@ -2441,7 +2500,7 @@ class server():
             @staticmethod
             def init():
                 logutil.info('加载数据文件…')
-                databaseserver.tables = databaseutil.loadjsons(databaseutil.dbdir + 'database/')
+                databaseserver.tables = databaseutil.loadjsons(''.join([databaseutil.dbdir, 'database/']))
 
             @staticmethod
             def loadjsons(path):
@@ -2450,9 +2509,9 @@ class server():
                 dirs = filesystemutil.getdirs(path)
                 for file in files:
                     if filesystemutil.getextsion(file) == 'json':
-                        result[filesystemutil.getfilename(file)] = jsonutil.parse(filesystemutil.readfile(path + file))
+                        result[filesystemutil.getfilename(file)] = jsonutil.parse(filesystemutil.readfile(''.join([path, file])))
                 for dir in dirs:
-                    result[dir] = databaseutil.loadjsons(path + dir + '/')
+                    result[dir] = databaseutil.loadjsons(''.join([path, dir, '/']))
                 return result
 
             @staticmethod
@@ -2468,11 +2527,11 @@ class server():
                     '/files/trader/avatar/'
                 )
                 for i in range(0, len(dirs) - 1):
-                    dirpath = path + dirs[i]
-                    files = filesystemutil.getfiles(dirpath + '/')
+                    dirpath = ''.join([path, dirs[i]])
+                    files = filesystemutil.getfiles(''.join([dirpath, '/']))
                     for file in files:
-                        result[routes[i] + filesystemutil.stripextension(file)] = dirpath + '/' + file
-                result['/favicon.ico'] = path + 'icon.ico'
+                        result[''.join([routes[i], filesystemutil.stripextension(file)])] = '/'.join([dirpath, file])
+                result['/favicon.ico'] = ''.join([path, 'icon.ico'])
                 return result
 
         ################################****################################
@@ -2509,15 +2568,15 @@ class server():
 
             @staticmethod
             def getfiles(path):
-                return [file for file in os.listdir(path) if os.path.isfile(path + file)]
+                return [file for file in os.listdir(path) if os.path.isfile(''.join([path, file]))]
 
             @staticmethod
             def getdirs(path):
-                return [dir for dir in os.listdir(path) if os.path.isdir(path + dir)]
+                return [dir for dir in os.listdir(path) if os.path.isdir(''.join([path, dir]))]
 
             @staticmethod
             def getfiledir(path):
-                return os.path.dirname(path) + '/'
+                return ''.join([os.path.dirname(path), '/'])
 
             @staticmethod
             def getfilename(path):
@@ -2653,34 +2712,34 @@ class server():
 
             @staticmethod
             def write(data):
-                filesystemutil.writefile(logutil.logfile, data + '\n', True)
+                filesystemutil.writefile(logutil.logfile, ''.join([data, '\n']), True)
 
             @staticmethod
             def log(data, front = '', back = ''):
                 frontcolor = logutil.frontcolor[front] if front in logutil.frontcolor else ''
                 backcolor = logutil.backcolor[back] if back in logutil.backcolor else ''
-                colors = frontcolor + backcolor
+                colors = ''.join([frontcolor, backcolor])
                 if colors:
-                    print(colors + data + '\x1b[0m')
+                    print(''.join([colors, data, '\x1b[0m']))
                 else:
                     print(data)
                 logutil.write(data)
 
             @staticmethod
             def success(data):
-                logutil.log('[成功] ' + str(data), 'white', 'green')
+                logutil.log(' '.join(['[成功]', str(data)]), 'white', 'green')
 
             @staticmethod
             def info(data):
-                logutil.log('[信息] ' + str(data), 'cyan', '')
+                logutil.log(' '.join(['[信息]', str(data)]), 'cyan', '')
 
             @staticmethod
             def error(data):
-                logutil.log('[错误] ' + str(data), 'white', 'red')
+                logutil.log(' '.join(['[错误]', str(data)]), 'white', 'red')
 
             @staticmethod
             def warning(data):
-                logutil.log('[警告] ' + str(data), 'black', 'yellow')
+                logutil.log(' '.join(['[警告]', str(data)]), 'black', 'yellow')
 
         ################################****################################
         class randomutil:
@@ -2726,7 +2785,7 @@ class server():
                     DO NOT MODIFY OR OVERRIDE.
                     '''
                     if sk.socket(sk.AF_INET, sk.SOCK_STREAM).connect_ex(addr) == 0:
-                        raise Exception('Port ' + str(addr[1]) + ' already in use')
+                        raise Exception(' '.join(['端口', str(addr[1]), '已被占用']))
                     hsv.HTTPServer.__init__(self, addr, handler)
                     self.host = addr[0]
                     self.port = self.socket.getsockname()[1]
@@ -2754,9 +2813,9 @@ class server():
                 def sendresponse(resp, ssid, url, body):
                     result = httprouter.getresponse(ssid, url, body, resp)
                     if not result:
-                        logutil.log('[无效] ' + url, 'white', 'red')
+                        logutil.log(' '.join(['[无效]', url]), 'white', 'red')
                         #logutil.info(body)
-                        result = httputil.getclearedbody(None, 404, 'UNHANDLED RESPONSE: ' + url)
+                        result = httputil.getclearedbody(None, 404, ' '.join(['未处理的请求:' + url]))
                     if result in httpserver.onrespond:
                         httpserver.onrespond[result](ssid, url, body, result, resp)
                     else:
@@ -2792,7 +2851,7 @@ class server():
                 def setheaders(code, msg, type, ssid, resp):
                     resp.send_response(code, msg)
                     resp.send_header('Content-Type', type)
-                    resp.send_header('Set-Cookie', 'PHPSESSID=' + ssid)
+                    resp.send_header('Set-Cookie', ''.join(['PHPSESSID=', ssid]))
                     resp.end_headers()
 
                 @staticmethod
@@ -2851,7 +2910,7 @@ class server():
                     cookies = self.getcookies()
                     ssid = str(cookies[ssidattr])[str(cookies[ssidattr]).find(ssidattr) + len(ssidattr) + 1:] if ssidattr in cookies else ''
                     body = ''
-                    logutil.log('[' + str(ssid) + '] ' + url, 'white')
+                    logutil.log(' '.join(['[', str(ssid), ']', url]), 'white')
                     serverutil.wshttphandler.sendresponse(self, ssid, url, body)
 
                 def POST(self):
@@ -2865,7 +2924,7 @@ class server():
                     ssid = str(cookies[ssidattr])[str(cookies[ssidattr]).find(ssidattr) + len(ssidattr) + 1:] if ssidattr in cookies else ''
                     bodylen = int(self.headers.get('Content-Length') or 0)
                     body = jsonutil.parse(zl.decompress(self.rfile.read(bodylen)))
-                    logutil.log('[' + str(ssid) + '] ' + url, 'white')
+                    logutil.log(' '.join(['[', str(ssid), ']', url]), 'white')
                     serverutil.wshttphandler.sendresponse(self, ssid, url, body)
 
                 def handle(self):
@@ -3131,10 +3190,10 @@ class server():
             @staticmethod
             def setinfo():
                 ca.init(autoreset = True)
-                watermarkutil.name = 'SPT-iDk Python '
+                watermarkutil.name = 'SPT-iDk Python'
                 watermarkutil.version = '1.0.0'
-                watermarkutil.zh_cn.insert(0, watermarkutil.name + watermarkutil.version)
-                sys.stdout.write('\x1b]2;' + watermarkutil.name + watermarkutil.version + '\x07')
+                watermarkutil.zh_cn.insert(0, ' '.join([watermarkutil.name, watermarkutil.version]))
+                sys.stdout.write(' '.join(['\x1b]2;', watermarkutil.name, watermarkutil.version, '\x07']))
                 sys.stdout.write('\u001B[2J\u001B[0;0f')
                 sys.stdout.flush()
 
@@ -3147,12 +3206,12 @@ class server():
                     if length > longest:
                         longest = length
                 line = '━' * longest
-                result.append('┏━' + line + '━┓')
+                result.append(''.join(['┏━', line, '━┓']))
                 for text in watermarkutil.zh_cn:
                     spacesize = longest - watermarkutil.length(text)
-                    spacetext = text + ' ' * spacesize
-                    result.append('┃ ' + spacetext + ' ┃')
-                result.append('┗━' + line + '━┛')
+                    spacetext = ''.join([text, ' ' * spacesize])
+                    result.append(''.join(['┃ ', spacetext, ' ┃']))
+                result.append(''.join(['┗━', line, '━┛']))
                 for text in result:
                     logutil.log(text, 'yellow')
 
