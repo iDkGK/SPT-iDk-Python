@@ -123,6 +123,7 @@
         ]
     },
     "settings": {
-        "window.title": "SPT-iDk Server"
+        "window.title": "SPT-iDk Server",
+        "python.formatting.provider": "yapf"
     }
 }
