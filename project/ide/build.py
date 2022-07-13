@@ -17,7 +17,7 @@ def cleanup():
     if (os.path.exists(builddir)):
         shutil.rmtree(builddir)
     if (os.path.exists(userdir)):
-        os.remove(userdir)
+        shutil.rmtree(userdir)
     if (os.path.exists(specfile)):
         os.remove(specfile)
 
