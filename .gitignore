@@ -1,4 +1,5 @@
 ## Server
 project/.venv/
 project/build/
+project/dist/
 project/user/
