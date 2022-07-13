@@ -23,10 +23,13 @@ import traceback as tb
 import websocket_server as wsv
 import zlib as zl
 
+
 class server():
+
     class bindings:
         ################################****################################
         class initializefunctions:
+
             @staticmethod
             def init():
                 pass
@@ -46,6 +49,7 @@ class server():
 
         ################################****################################
         class updatefunctions:
+
             @staticmethod
             def init():
                 pass
@@ -63,6 +67,7 @@ class server():
 
         ################################****################################
         class saveinitfunctions:
+
             @staticmethod
             def init():
                 pass
@@ -78,6 +83,7 @@ class server():
 
         ################################****################################
         class staticroutes:
+
             @staticmethod
             def init():
                 pass
@@ -116,6 +122,7 @@ class server():
 
         ################################****################################
         class dynamicroutes:
+
             @staticmethod
             def init():
                 pass
@@ -139,18 +146,18 @@ class server():
 
         ################################****################################
         class serverresponse:
+
             @staticmethod
             def init():
                 pass
 
             @staticmethod
             def getresponses():
-                return {
-                    'IMAGE': httpcallbacks.sendimage
-                }
+                return {'IMAGE': httpcallbacks.sendimage}
 
         ################################****################################
         class itemevents:
+
             @staticmethod
             def init():
                 pass
@@ -159,163 +166,167 @@ class server():
             def getevents():
                 return {
                     'CustomizationWear': {
-                        'aki': None#CustomizationCallbacks.wearClothing
+                        'aki': None  #CustomizationCallbacks.wearClothing
                     },
                     'CustomizationBuy': {
-                        'aki': None#CustomizationCallbacks.buyClothing
+                        'aki': None  #CustomizationCallbacks.buyClothing
                     },
                     'Eat': {
-                        'aki': None#HealthCallbacks.offraidEat
+                        'aki': None  #HealthCallbacks.offraidEat
                     },
                     'Heal': {
-                        'aki': None#HealthCallbacks.offraidHeal
+                        'aki': None  #HealthCallbacks.offraidHeal
                     },
                     'RestoreHealth': {
-                        'aki': None#HealthCallbacks.healthTreatment
+                        'aki': None  #HealthCallbacks.healthTreatment
                     },
                     'HideoutUpgrade': {
-                        'aki': None#HideoutCallbacks.upgrade
+                        'aki': None  #HideoutCallbacks.upgrade
                     },
                     'HideoutUpgradeComplete': {
-                        'aki': None#HideoutCallbacks.upgradeComplete
+                        'aki': None  #HideoutCallbacks.upgradeComplete
                     },
                     'HideoutPutItemsInAreaSlots': {
-                        'aki': None#HideoutCallbacks.putItemsInAreaSlots
+                        'aki': None  #HideoutCallbacks.putItemsInAreaSlots
                     },
                     'HideoutTakeItemsFromAreaSlots': {
-                        'aki': None#HideoutCallbacks.takeItemsFromAreaSlots
+                        'aki': None  #HideoutCallbacks.takeItemsFromAreaSlots
                     },
                     'HideoutToggleArea': {
-                        'aki': None#HideoutCallbacks.toggleArea
+                        'aki': None  #HideoutCallbacks.toggleArea
                     },
                     'HideoutSingleProductionStart': {
-                        'aki': None#HideoutCallbacks.singleProductionStart
+                        'aki': None  #HideoutCallbacks.singleProductionStart
                     },
                     'HideoutScavCaseProductionStart': {
-                        'aki': None#HideoutCallbacks.scavCaseProductionStart
+                        'aki': None  #HideoutCallbacks.scavCaseProductionStart
                     },
                     'HideoutContinuousProductionStart': {
-                        'aki': None#HideoutCallbacks.continuousProductionStart
+                        'aki':
+                        None  #HideoutCallbacks.continuousProductionStart
                     },
                     'HideoutTakeProduction': {
-                        'aki': None#HideoutCallbacks.takeProduction
+                        'aki': None  #HideoutCallbacks.takeProduction
                     },
                     'Insure': {
-                        'aki': None#InsuranceCallbacks.insure
+                        'aki': None  #InsuranceCallbacks.insure
                     },
                     'Move': {
-                        'aki': None#InventoryCallbacks.moveItem
+                        'aki': None  #InventoryCallbacks.moveItem
                     },
                     'Remove': {
-                        'aki': None#InventoryCallbacks.removeItem
+                        'aki': None  #InventoryCallbacks.removeItem
                     },
                     'Split': {
-                        'aki': None#InventoryCallbacks.splitItem
+                        'aki': None  #InventoryCallbacks.splitItem
                     },
                     'Merge': {
-                        'aki': None#InventoryCallbacks.mergeItem
+                        'aki': None  #InventoryCallbacks.mergeItem
                     },
                     'Transfer': {
-                        'aki': None#InventoryCallbacks.transferItem
+                        'aki': None  #InventoryCallbacks.transferItem
                     },
                     'Swap': {
-                        'aki': None#InventoryCallbacks.swapItem
+                        'aki': None  #InventoryCallbacks.swapItem
                     },
                     'Fold': {
-                        'aki': None#InventoryCallbacks.foldItem
+                        'aki': None  #InventoryCallbacks.foldItem
                     },
                     'Toggle': {
-                        'aki': None#InventoryCallbacks.toggleItem
+                        'aki': None  #InventoryCallbacks.toggleItem
                     },
                     'Tag': {
-                        'aki': None#InventoryCallbacks.tagItem
+                        'aki': None  #InventoryCallbacks.tagItem
                     },
                     'Bind': {
-                        'aki': None#InventoryCallbacks.bindItem
+                        'aki': None  #InventoryCallbacks.bindItem
                     },
                     'Examine': {
-                        'aki': None#InventoryCallbacks.examineItem
+                        'aki': None  #InventoryCallbacks.examineItem
                     },
                     'ReadEncyclopedia': {
-                        'aki': None#InventoryCallbacks.readEncyclopedia
+                        'aki': None  #InventoryCallbacks.readEncyclopedia
                     },
                     'ApplyInventoryChanges': {
-                        'aki': None#InventoryCallbacks.sortInventory
+                        'aki': None  #InventoryCallbacks.sortInventory
                     },
                     'AddNote': {
-                        'aki': None#NoteCallbacks.addNote
+                        'aki': None  #NoteCallbacks.addNote
                     },
                     'EditNote': {
-                        'aki': None#NoteCallbacks.editNote
+                        'aki': None  #NoteCallbacks.editNote
                     },
                     'DeleteNote': {
-                        'aki': None#NoteCallbacks.deleteNote
+                        'aki': None  #NoteCallbacks.deleteNote
                     },
                     'SaveBuild': {
-                        'aki': None#PresetBuildCallbacks.saveBuild
+                        'aki': None  #PresetBuildCallbacks.saveBuild
                     },
                     'RemoveBuild': {
-                        'aki': None#PresetBuildCallbacks.removeBuild
+                        'aki': None  #PresetBuildCallbacks.removeBuild
                     },
                     'QuestAccept': {
-                        'aki': None#QuestCallbacks.acceptQuest
+                        'aki': None  #QuestCallbacks.acceptQuest
                     },
                     'QuestComplete': {
-                        'aki': None#QuestCallbacks.completeQuest
+                        'aki': None  #QuestCallbacks.completeQuest
                     },
                     'QuestHandover': {
-                        'aki': None#QuestCallbacks.handoverQuest
+                        'aki': None  #QuestCallbacks.handoverQuest
                     },
                     'RagFairAddOffer': {
-                        'aki': None#RagfairCallbacks.addOffer
+                        'aki': None  #RagfairCallbacks.addOffer
                     },
                     'RagFairRemoveOffer': {
-                        'aki': None#RagfairCallbacks.removeOffer
+                        'aki': None  #RagfairCallbacks.removeOffer
                     },
                     'RagFairRenewOffer': {
-                        'aki': None#RagfairCallbacks.extendOffer
+                        'aki': None  #RagfairCallbacks.extendOffer
                     },
                     'Repair': {
-                        'aki': None#RepairCallbacks.repair
+                        'aki': None  #RepairCallbacks.repair
                     },
                     'TradingConfirm': {
-                        'aki': None#TradeCallbacks.processTrade
+                        'aki': None  #TradeCallbacks.processTrade
                     },
                     'RagFairBuyOffer': {
-                        'aki': None#TradeCallbacks.processRagfairTrade
+                        'aki': None  #TradeCallbacks.processRagfairTrade
                     },
                     'AddToWishList': {
-                        'aki': None#WishlistCallbacks.addToWishlist
+                        'aki': None  #WishlistCallbacks.addToWishlist
                     },
                     'RemoveFromWishList': {
-                        'aki': None#WishlistCallbacks.removeFromWishlist
+                        'aki': None  #WishlistCallbacks.removeFromWishlist
                     },
                     'CreateMapMarker': {
-                        'aki': None#InventoryCallbacks.createMapMarker
+                        'aki': None  #InventoryCallbacks.createMapMarker
                     },
                     'DeleteMapMarker': {
-                        'aki': None#InventoryCallbacks.deleteMapMarker
+                        'aki': None  #InventoryCallbacks.deleteMapMarker
                     },
                     'EditMapMarker': {
-                        'aki': None#InventoryCallbacks.editMapMarker
+                        'aki': None  #InventoryCallbacks.editMapMarker
                     }
                 }
 
     class callbacks:
         ################################****################################
         class botcallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class bundlecallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class configcallbacks:
+
             @staticmethod
             def init():
                 botconfig.init()
@@ -337,18 +348,21 @@ class server():
 
         ################################****################################
         class customizationcallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class databasecallbacks:
+
             @staticmethod
             def init():
                 databaseutil.init()
 
         ################################****################################
         class dialoguecallbacks:
+
             @staticmethod
             def init():
                 pass
@@ -358,24 +372,28 @@ class server():
 
         ################################****################################
         class gamecallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class handbookcallbacks:
+
             @staticmethod
             def init():
                 handbookcontroller.init()
 
         ################################****################################
         class healthcallbacks:
+
             @staticmethod
             def init(ssid):
                 healthcontroller.init(ssid)
 
         ################################****################################
         class hideoutcallbacks:
+
             @staticmethod
             def init():
                 pass
@@ -387,6 +405,7 @@ class server():
 
         ################################****################################
         class httpcallbacks:
+
             @staticmethod
             def init():
                 imagerouter.init()
@@ -404,12 +423,14 @@ class server():
 
         ################################****################################
         class inraidcallbacks:
+
             @staticmethod
             def init(ssid):
                 inraidcontroller.init(ssid)
 
         ################################****################################
         class insurancecallbacks:
+
             @staticmethod
             def init(ssid):
                 insurancecontroller.init(ssid)
@@ -421,18 +442,21 @@ class server():
 
         ################################****################################
         class inventorycallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class itemeventcallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class launchercallbacks:
+
             @staticmethod
             def init():
                 pass
@@ -440,9 +464,12 @@ class server():
             @staticmethod
             def connect(ssid, url, body, result, resp):
                 return httputil.getnobody({
-                    'backendUrl': httpserver.getbackendurl(),
-                    'name': ' '.join([watermarkutil.name, watermarkutil.version]),
-                    'editions': list(databaseserver.tables['templates']['profiles'].keys())
+                    'backendUrl':
+                    httpserver.getbackendurl(),
+                    'name':
+                    ' '.join([watermarkutil.name, watermarkutil.version]),
+                    'editions':
+                    list(databaseserver.tables['templates']['profiles'].keys())
                 })
 
             @staticmethod
@@ -461,11 +488,13 @@ class server():
 
             @staticmethod
             def get(ssid, url, body, result, resp):
-                return httputil.getnobody(launchercontroller.find(launchercontroller.login(body)))
+                return httputil.getnobody(
+                    launchercontroller.find(launchercontroller.login(body)))
 
             @staticmethod
             def getinfo(ssid, url, body, result, resp):
-                return httputil.getnobody(profilecontroller.getminiprofile(ssid))
+                return httputil.getnobody(
+                    profilecontroller.getminiprofile(ssid))
 
             @staticmethod
             def changeusername(ssid, url, body, result, resp):
@@ -485,60 +514,70 @@ class server():
 
         ################################****################################
         class locationcallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class classname:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class matchcallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class notecallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class notifiercallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class presetbuildcallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class presetcallbacks:
+
             @staticmethod
             def init():
                 presetcontroller.init()
 
         ################################****################################
         class profilecallbacks:
+
             @staticmethod
             def init(ssid):
                 profilecontroller.init(ssid)
 
         ################################****################################
         class questcallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class ragfaircallbacks:
+
             @staticmethod
             def init():
                 ragfairserver.init()
@@ -548,12 +587,14 @@ class server():
 
         ################################****################################
         class repaircallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class savecallbacks:
+
             @staticmethod
             def init():
                 saveserver.init()
@@ -565,12 +606,14 @@ class server():
 
         ################################****################################
         class tradecallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class tradercallbacks:
+
             @staticmethod
             def init():
                 pass
@@ -580,12 +623,14 @@ class server():
 
         ################################****################################
         class weathercallbacks:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class wishlistcallbacks:
+
             @staticmethod
             def init():
                 pass
@@ -629,9 +674,12 @@ class server():
                     'test': 40,
                     'exUsec': 15
                 }
-                botconfig.bosses = ['bossbully', 'bossgluhar', 'bosskilla', 'bosskojaniy', 'bosssanitar', 'bosstagilla']
+                botconfig.bosses = [
+                    'bossbully', 'bossgluhar', 'bosskilla', 'bosskojaniy',
+                    'bosssanitar', 'bosstagilla'
+                ]
                 botconfig.durability = {
-                    'pmcbot':{
+                    'pmcbot': {
                         'armor': {
                             'minPercent': 80
                         },
@@ -639,7 +687,7 @@ class server():
                             'minPercent': 80
                         }
                     },
-                    'exusec':{
+                    'exusec': {
                         'armor': {
                             'minPercent': 80
                         },
@@ -745,14 +793,8 @@ class server():
 
             @staticmethod
             def init():
-                healthconfig.healthMultipliers = {
-                    'death': 0.3,
-                    'blacked': 0.1
-                }
-                healthconfig.save = {
-                    'health': True,
-                    'effects': True
-                }
+                healthconfig.healthMultipliers = {'death': 0.3, 'blacked': 0.1}
+                healthconfig.save = {'health': True, 'effects': True}
 
         ################################****################################
         class hideoutconfig:
@@ -791,11 +833,10 @@ class server():
                     'scavWars': False,
                     'taggedAndCursed': False
                 }
-                inraidconfig.save = {
-                    'loot': True,
-                    'durability': True
-                }
-                inraidconfig.carExtracts = ['Dorms V-Ex', 'PP Exfil', ' V-Ex_light', 'South V-Ex']
+                inraidconfig.save = {'loot': True, 'durability': True}
+                inraidconfig.carExtracts = [
+                    'Dorms V-Ex', 'PP Exfil', ' V-Ex_light', 'South V-Ex'
+                ]
                 inraidconfig.carExtractBaseStandingGain = 0.25
                 inraidconfig.scavExtractGain = 0.01
 
@@ -875,129 +916,150 @@ class server():
             @staticmethod
             def init():
                 questconfig.redeemTime = 48,
-                questconfig.repeatableQuests = [{
-                    'name': 'Daily',
-                    'types': ['Elimination', 'Completion', 'Exploration'],
-                    'resetTime': 60 * 60 * 24,
-                    'numQuests': 3,
-                    'minPlayerLevel': 5,
-                    'rewardScaling': {
-                        'levels': [1, 20, 45, 100],
-                        'experience':  [2000, 4000, 20000, 80000],
-                        'roubles': [6000, 10000, 100000, 250000],
-                        'items': [1, 2, 4, 4],
-                        'reputation': [0.01, 0.01, 0.01, 0.01],
-                        'rewardSpread': 0.5
-                    },
-                    'locations': {
-                        'any': ['any'],
-                        'factory4_day': ['factory4_day', 'factory4_night'],
-                        'bigmap': ['bigmap'],
-                        'Woods': ['Woods'],
-                        'Shoreline': ['Shoreline'],
-                        'Interchange': ['Interchange'],
-                        'Lighthouse': ['Lighthouse'],
-                        'laboratory': ['laboratory'],
-                        'RezervBase': ['RezervBase']
-                    },
-                    'questConfig': {
-                        'Exploration': {
-                            'maxExtracts': 3,
-                            'specificExits': {
-                                'probability': 0.25,
-                                'passageRequirementWhitelist': [
-                                    'None',
-                                    'TransferItem',
-                                    'WorldEvent',
-                                    'Train',
-                                    'Reference',
-                                    'Empty'
-                                ]
+                questconfig.repeatableQuests = [
+                    {
+                        'name': 'Daily',
+                        'types': ['Elimination', 'Completion', 'Exploration'],
+                        'resetTime': 60 * 60 * 24,
+                        'numQuests': 3,
+                        'minPlayerLevel': 5,
+                        'rewardScaling': {
+                            'levels': [1, 20, 45, 100],
+                            'experience': [2000, 4000, 20000, 80000],
+                            'roubles': [6000, 10000, 100000, 250000],
+                            'items': [1, 2, 4, 4],
+                            'reputation': [0.01, 0.01, 0.01, 0.01],
+                            'rewardSpread': 0.5
+                        },
+                        'locations': {
+                            'any': ['any'],
+                            'factory4_day': ['factory4_day', 'factory4_night'],
+                            'bigmap': ['bigmap'],
+                            'Woods': ['Woods'],
+                            'Shoreline': ['Shoreline'],
+                            'Interchange': ['Interchange'],
+                            'Lighthouse': ['Lighthouse'],
+                            'laboratory': ['laboratory'],
+                            'RezervBase': ['RezervBase']
+                        },
+                        'questConfig': {
+                            'Exploration': {
+                                'maxExtracts': 3,
+                                'specificExits': {
+                                    'probability':
+                                    0.25,
+                                    'passageRequirementWhitelist': [
+                                        'None', 'TransferItem', 'WorldEvent',
+                                        'Train', 'Reference', 'Empty'
+                                    ]
+                                }
+                            },
+                            'Completion': {
+                                'minRequestedAmount': 1,
+                                'maxRequestedAmount': 5,
+                                'minRequestedBulletAmount': 20,
+                                'maxRequestedBulletAmount': 60,
+                                'useWhitelist': True,
+                                'useBlacklist': False,
+                            },
+                            'Elimination': {
+                                'targets':
+                                None,  #__REPLACEME__
+                                'bodyPartProb':
+                                0.4,
+                                'bodyParts':
+                                None,  #__REPLACEME__
+                                'specificLocationProb':
+                                0.25,
+                                'distLocationBlacklist': [
+                                    'laboratory', 'factory4_day',
+                                    'factory4_night'
+                                ],
+                                'distProb':
+                                0.25,
+                                'maxDist':
+                                200,
+                                'minDist':
+                                20,
+                                'maxKills':
+                                5,
+                                'minKills':
+                                2
                             }
+                        }
+                    },
+                    {
+                        'name': 'Weekly',
+                        'types': ['Elimination', 'Completion', 'Exploration'],
+                        'resetTime': 7 * 60 * 60 * 24,
+                        'numQuests': 1,
+                        'minPlayerLevel': 15,
+                        'rewardScaling': {
+                            'levels': [1, 20, 45, 100],
+                            'experience': [4000, 8000, 40000, 160000],
+                            'roubles': [12000, 20000, 200000, 500000],
+                            'items': [3, 3, 4, 4],
+                            'reputation': [0.02, 0.03, 0.03, 0.03],
+                            'rewardSpread': 0.5
                         },
-                        'Completion': {
-                            'minRequestedAmount': 1,
-                            'maxRequestedAmount': 5,
-                            'minRequestedBulletAmount': 20,
-                            'maxRequestedBulletAmount': 60,
-                            'useWhitelist': True,
-                            'useBlacklist': False,
+                        'locations': {
+                            'any': ['any'],
+                            'factory4_day': ['factory4_day', 'factory4_night'],
+                            'bigmap': ['bigmap'],
+                            'Woods': ['Woods'],
+                            'Shoreline': ['Shoreline'],
+                            'Interchange': ['Interchange'],
+                            'Lighthouse': ['Lighthouse'],
+                            'laboratory': ['laboratory'],
+                            'RezervBase': ['RezervBase']
                         },
-                        'Elimination': {
-                            'targets': None,#__REPLACEME__
-                            'bodyPartProb': 0.4,
-                            'bodyParts': None,#__REPLACEME__
-                            'specificLocationProb': 0.25,
-                            'distLocationBlacklist': ['laboratory', 'factory4_day', 'factory4_night'],
-                            'distProb': 0.25,
-                            'maxDist': 200,
-                            'minDist': 20,
-                            'maxKills': 5,
-                            'minKills': 2
+                        'questConfig': {
+                            'Exploration': {
+                                'maxExtracts': 10,
+                                'specificExits': {
+                                    'probability':
+                                    0.5,
+                                    'passageRequirementWhitelist': [
+                                        'None', 'TransferItem', 'WorldEvent',
+                                        'Train', 'Reference', 'Empty'
+                                    ]
+                                }
+                            },
+                            'Completion': {
+                                'minRequestedAmount': 2,
+                                'maxRequestedAmount': 10,
+                                'minRequestedBulletAmount': 20,
+                                'maxRequestedBulletAmount': 60,
+                                'useWhitelist': True,
+                                'useBlacklist': False,
+                            },
+                            'Elimination': {
+                                'targets':
+                                None,  #__REPLACEME__
+                                'bodyPartProb':
+                                0.4,
+                                'bodyParts':
+                                None,  #__REPLACEME__
+                                'specificLocationProb':
+                                0.25,
+                                'distLocationBlacklist': [
+                                    'laboratory', 'factory4_day',
+                                    'factory4_night'
+                                ],
+                                'distProb':
+                                0.25,
+                                'maxDist':
+                                200,
+                                'minDist':
+                                20,
+                                'maxKills':
+                                15,
+                                'minKills':
+                                5
+                            }
                         }
                     }
-                }, {
-                    'name': 'Weekly',
-                    'types': ['Elimination', 'Completion', 'Exploration'],
-                    'resetTime': 7 * 60 * 60 * 24,
-                    'numQuests': 1,
-                    'minPlayerLevel': 15,
-                    'rewardScaling': {
-                        'levels': [1, 20, 45, 100],
-                        'experience':  [4000, 8000, 40000, 160000],
-                        'roubles': [12000, 20000, 200000, 500000],
-                        'items': [3, 3, 4, 4],
-                        'reputation': [0.02, 0.03, 0.03, 0.03],
-                        'rewardSpread': 0.5
-                    },
-                    'locations': {
-                        'any': ['any'],
-                        'factory4_day': ['factory4_day', 'factory4_night'],
-                        'bigmap': ['bigmap'],
-                        'Woods': ['Woods'],
-                        'Shoreline': ['Shoreline'],
-                        'Interchange': ['Interchange'],
-                        'Lighthouse': ['Lighthouse'],
-                        'laboratory': ['laboratory'],
-                        'RezervBase': ['RezervBase']
-                    },
-                    'questConfig': {
-                        'Exploration': {
-                            'maxExtracts': 10,
-                            'specificExits': {
-                                'probability': 0.5,
-                                'passageRequirementWhitelist': [
-                                    'None',
-                                    'TransferItem',
-                                    'WorldEvent',  
-                                    'Train',
-                                    'Reference',
-                                    'Empty'
-                                ]
-                            }
-                        },
-                        'Completion': {
-                            'minRequestedAmount': 2,
-                            'maxRequestedAmount': 10,
-                            'minRequestedBulletAmount': 20,
-                            'maxRequestedBulletAmount': 60,
-                            'useWhitelist': True,
-                            'useBlacklist': False,
-                        },
-                        'Elimination': {
-                            'targets': None,#__REPLACEME__
-                            'bodyPartProb': 0.4,
-                            'bodyParts': None,#__REPLACEME__
-                            'specificLocationProb': 0.25,
-                            'distLocationBlacklist': ['laboratory', 'factory4_day', 'factory4_night'],
-                            'distProb': 0.25,
-                            'maxDist': 200,
-                            'minDist': 20,
-                            'maxKills': 15,
-                            'minKills': 5
-                        }
-                    }
-                }]
+                ]
 
         ################################****################################
         class ragfairconfig:
@@ -1036,7 +1098,8 @@ class server():
                     'ragfair': False
                 }
                 ragfairconfig.dynamic = {
-                    'expiredOfferThreshold': 1500,
+                    'expiredOfferThreshold':
+                    1500,
                     'offerItemCount': {
                         'min': 7,
                         'max': 15
@@ -1095,8 +1158,10 @@ class server():
                             '5cde8864d7f00c0010373be1',
                             '5d2f2ab648f03550091993ca'
                         ],
-                        'enableBsgList': True,
-                        'enableQuestList': True
+                        'enableBsgList':
+                        True,
+                        'enableQuestList':
+                        True
                     }
                 }
 
@@ -1133,15 +1198,11 @@ class server():
                 traderconfig.fencePresetPriceMult = 2.5,
                 traderconfig.minDurabilityForSale = 60,
                 traderconfig.fenceItemIgnoreList = [
-                    '58ac60eb86f77401897560ff',
-                    '59e8936686f77467ce798647',
-                    '56e294cdd2720b603a8b4575',
-                    '5661632d4bdc2d903d8b456b',
-                    '543be5e94bdc2df1348b4568',
-                    '543be6674bdc2df1348b4569',
-                    '5448bf274bdc2dfc2f8b456a',
-                    '543be5664bdc2dd4348b4569',
-                    '5447bedf4bdc2d87278b4568' 
+                    '58ac60eb86f77401897560ff', '59e8936686f77467ce798647',
+                    '56e294cdd2720b603a8b4575', '5661632d4bdc2d903d8b456b',
+                    '543be5e94bdc2df1348b4568', '543be6674bdc2df1348b4569',
+                    '5448bf274bdc2dfc2f8b456a', '543be5664bdc2dd4348b4569',
+                    '5447bedf4bdc2d87278b4568'
                 ]
 
         ################################****################################
@@ -1194,18 +1255,21 @@ class server():
     class controllers:
         ################################****################################
         class botcontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class customizationcontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class dialoguecontroller:
+
             @staticmethod
             def init():
                 pass
@@ -1216,6 +1280,7 @@ class server():
 
         ################################****################################
         class gamecontroller:
+
             @staticmethod
             def init():
                 pass
@@ -1236,19 +1301,31 @@ class server():
                         'byParent': {}
                     }
                 }
-                for item in databaseserver.tables['templates']['handbook']['Items']:
-                    handbookcontroller.lookup['items']['byId'][item['Id']] = item['Price']
-                    if not item['ParentId'] in handbookcontroller.lookup['items']['byParent']:
-                        handbookcontroller.lookup['items']['byParent'][item['ParentId']] = []
-                    handbookcontroller.lookup['items']['byParent'][item['ParentId']].append(item['Id'])
-                for category in databaseserver.tables['templates']['handbook']['Categories']:
+                for item in databaseserver.tables['templates']['handbook'][
+                        'Items']:
+                    handbookcontroller.lookup['items']['byId'][
+                        item['Id']] = item['Price']
+                    if not item['ParentId'] in handbookcontroller.lookup[
+                            'items']['byParent']:
+                        handbookcontroller.lookup['items']['byParent'][
+                            item['ParentId']] = []
+                    handbookcontroller.lookup['items']['byParent'][
+                        item['ParentId']].append(item['Id'])
+                for category in databaseserver.tables['templates']['handbook'][
+                        'Categories']:
                     if category['ParentId']:
-                        handbookcontroller.lookup['categories']['byId'][category['Id']] = category['ParentId']
-                        if not category['ParentId'] in handbookcontroller.lookup['categories']['byParent']:
-                            handbookcontroller.lookup['categories']['byParent'][category['ParentId']] = []
-                        handbookcontroller.lookup['categories']['byParent'][category['ParentId']].append(category['Id'])
+                        handbookcontroller.lookup['categories']['byId'][
+                            category['Id']] = category['ParentId']
+                        if not category[
+                                'ParentId'] in handbookcontroller.lookup[
+                                    'categories']['byParent']:
+                            handbookcontroller.lookup['categories'][
+                                'byParent'][category['ParentId']] = []
+                        handbookcontroller.lookup['categories']['byParent'][
+                            category['ParentId']].append(category['Id'])
                     else:
-                        handbookcontroller.lookup['categories']['byId'][category['Id']] = None
+                        handbookcontroller.lookup['categories']['byId'][
+                            category['Id']] = None
 
             def gettemplateprice(id):
                 if id in handbookcontroller.lookup['items']['byId']:
@@ -1257,6 +1334,7 @@ class server():
 
         ################################****################################
         class healthcontroller:
+
             @staticmethod
             def init(ssid):
                 if not 'vitality' in saveserver.profiles[ssid]:
@@ -1286,12 +1364,14 @@ class server():
 
         ################################****################################
         class hideoutcontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class inraidcontroller:
+
             @staticmethod
             def init(ssid):
                 if not 'inraid' in saveserver.profiles[ssid]:
@@ -1302,18 +1382,21 @@ class server():
 
         ################################****################################
         class insurancecontroller:
+
             def init(ssid):
                 if not 'insurance' in saveserver.profiles[ssid]:
                     saveserver.profiles[ssid]['insurance'] = []
 
         ################################****################################
         class inventorycontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class launchercontroller:
+
             @staticmethod
             def init():
                 pass
@@ -1321,7 +1404,8 @@ class server():
             @staticmethod
             def register(body):
                 for ssid in saveserver.profiles:
-                    if body['username'] == saveserver.profiles[ssid]['info']['username']:
+                    if body['username'] == saveserver.profiles[ssid]['info'][
+                            'username']:
                         return ''
                 ssid = hashutil.generate()
                 saveserver.profiles[ssid] = {
@@ -1340,7 +1424,10 @@ class server():
             @staticmethod
             def login(body):
                 for ssid in saveserver.profiles:
-                    if body['username'] == saveserver.profiles[ssid]['info']['username'] and body['password'] == saveserver.profiles[ssid]['info']['password']:
+                    if body['username'] == saveserver.profiles[ssid]['info'][
+                            'username'] and body[
+                                'password'] == saveserver.profiles[ssid][
+                                    'info']['password']:
                         return ssid
                 return ''
 
@@ -1352,50 +1439,61 @@ class server():
 
         ################################****################################
         class locationcontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class matchcontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class notecontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class notifiercontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class paymentcontroller:
+
             @staticmethod
             def init():
                 pass
 
             @staticmethod
             def ismoneytpl(tpl):
-                return tpl in ['569668774bdc2da2298b4568', '5696686a4bdc2da3298b456a', '5449016a4bdc2d6f028b456f']
+                return tpl in [
+                    '569668774bdc2da2298b4568', '5696686a4bdc2da3298b456a',
+                    '5449016a4bdc2d6f028b456f'
+                ]
 
             @staticmethod
             def fromrub(price, currency):
-                return round(price / handbookcontroller.gettemplateprice(currency))
+                return round(price /
+                             handbookcontroller.gettemplateprice(currency))
 
         ################################****################################
         class playercontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class presetbuildcontroller:
+
             @staticmethod
             def init():
                 pass
@@ -1406,7 +1504,8 @@ class server():
 
             @staticmethod
             def init():
-                for preset in list(databaseserver.tables['globals']['ItemPresets'].values()):
+                for preset in list(databaseserver.tables['globals']
+                                   ['ItemPresets'].values()):
                     tpl = preset['_items'][0]['_tpl']
                     if not tpl in presetcontroller.lookup:
                         presetcontroller.lookup[tpl] = []
@@ -1427,11 +1526,13 @@ class server():
                     return presets
                 idlist = presetcontroller.lookup[tpl]
                 for id in idlist:
-                    presets.append(databaseserver.tables['globals']['ItemPresets'][id])
+                    presets.append(
+                        databaseserver.tables['globals']['ItemPresets'][id])
                 return presets
 
         ################################****################################
         class profilecontroller:
+
             @staticmethod
             def init(ssid):
                 if not 'characters' in saveserver.profiles[ssid]:
@@ -1442,7 +1543,8 @@ class server():
 
             @staticmethod
             def getminiprofile(ssid):
-                maxlvl = len(databaseserver.tables['globals']['config']['exp']['level']['exp_table']) - 1
+                maxlvl = len(databaseserver.tables['globals']['config']['exp']
+                             ['level']['exp_table']) - 1
                 return {
                     'nickname': 'unknown',
                     'side': 'unknown',
@@ -1455,25 +1557,29 @@ class server():
 
             @staticmethod
             def getpmcprofile(ssid):
-                if not ssid in saveserver.profiles or not saveserver.profiles[ssid]['characters']['pmc']:
+                if not ssid in saveserver.profiles or not saveserver.profiles[
+                        ssid]['characters']['pmc']:
                     return None
                 return saveserver.profiles[ssid]['characters']['pmc']
 
             @staticmethod
             def getprofilebypmcid(pmcid):
                 for ssid in saveserver.profiles:
-                    if saveserver.profiles[ssid]['characters']['pmc']['_id'] == pmcid:
+                    if saveserver.profiles[ssid]['characters']['pmc'][
+                            '_id'] == pmcid:
                         return saveserver.profiles[ssid]['characters']['pmc']
                 return None
 
         ################################****################################
         class questcontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class ragfaircontroller:
+
             @staticmethod
             def init():
                 pass
@@ -1481,44 +1587,55 @@ class server():
             @staticmethod
             def returnitems(ssid, items):
                 message = {
-                    'text': databaseserver['tables']['locales']['global']['ch']['mail']['5bdac06e86f774296f5a19c5'],
-                    'type': 13,
-                    'maxStorageTime': questconfig.redeemTime * 3600
+                    'text':
+                    databaseserver['tables']['locales']['global']['ch']['mail']
+                    ['5bdac06e86f774296f5a19c5'],
+                    'type':
+                    13,
+                    'maxStorageTime':
+                    questconfig.redeemTime * 3600
                 }
-                dialoguecontroller.adddialoguemessage('5ac3b934156ae10c4430e83c', message, ssid, items)
+                dialoguecontroller.adddialoguemessage(
+                    '5ac3b934156ae10c4430e83c', message, ssid, items)
 
         ################################****################################
         class repaircontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class repeatablequestcontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class tradecontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class tradercontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class weathercontroller:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class wishlistcontroller:
+
             @staticmethod
             def init():
                 pass
@@ -1526,44 +1643,50 @@ class server():
     class generators:
         ################################****################################
         class botgenerator:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class locationgenerator:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class pmclootgenerator:
+
             @staticmethod
             def init():
                 pass
 
-
     class helpers:
         ################################****################################
         class containerhelper:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class durabilitylimitshelper:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class inventoryhelper:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class itemhelper:
+
             @staticmethod
             def init():
                 pass
@@ -1658,7 +1781,8 @@ class server():
             @staticmethod
             def getitem(tpl):
                 if tpl in databaseserver.tables['templates']['items']:
-                    return True, databaseserver.tables['templates']['items'][tpl]
+                    return True, databaseserver.tables['templates']['items'][
+                        tpl]
                 return False, {}
 
             @staticmethod
@@ -1684,9 +1808,16 @@ class server():
             def findandreturnchildrenbyassort(id, items):
                 itemlist = []
                 for item in items:
-                    if item['parentId'] == id and len(list(filter(lambda i: i['_id'] == item['_id'], itemlist))) == 0:
+                    if item['parentId'] == id and len(
+                            list(
+                                filter(lambda i: i['_id'] == item['_id'],
+                                       itemlist))) == 0:
                         itemlist.append(item)
-                        itemlist = [*itemlist, *itemhelper.findandreturnchildrenbyassort(item['_id'], items)]
+                        itemlist = [
+                            *itemlist,
+                            *itemhelper.findandreturnchildrenbyassort(
+                                item['_id'], items)
+                        ]
                 return itemlist
 
             @staticmethod
@@ -1700,7 +1831,8 @@ class server():
                     return True
                 if template['_parent'] in tpllist:
                     return True
-                return itemhelper.doesitemorparentsidmatch(template['_parent'], tpllist)
+                return itemhelper.doesitemorparentsidmatch(
+                    template['_parent'], tpllist)
 
             @staticmethod
             def getitemqualitymodifier(item):
@@ -1708,9 +1840,11 @@ class server():
                 result = 1
                 if 'upd' in item:
                     if 'MedKit' in item['upd']:
-                        result = item['upd']['MedKit']['HpResource'] / template['_props']['MaxHpResource']
+                        result = item['upd']['MedKit'][
+                            'HpResource'] / template['_props']['MaxHpResource']
                     if 'Repairable' in item['upd']:
-                        result = item['upd']['Repairable']['Durability'] / item['upd']['Repairable']['MaxDurability']
+                        result = item['upd']['Repairable']['Durability'] / item[
+                            'upd']['Repairable']['MaxDurability']
                         if not 'armorClass' in template['_props']:
                             result = m.sqrt(result)
                     if result == 0:
@@ -1719,18 +1853,21 @@ class server():
 
         ################################****################################
         class questhelper:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class traderhelper:
+
             @staticmethod
             def init():
                 pass
 
         ################################****################################
         class utilityhelper:
+
             @staticmethod
             def init():
                 pass
@@ -1738,6 +1875,7 @@ class server():
     class loaders:
         ################################****################################
         class bundleloader:
+
             @staticmethod
             def init():
                 pass
@@ -1750,7 +1888,8 @@ class server():
 
             @staticmethod
             def init():
-                if filesystemutil.exists(modloader.moddir) and len(filesystemutil.getdirs(modloader.moddir)) > 0:
+                if filesystemutil.exists(modloader.moddir) and len(
+                        filesystemutil.getdirs(modloader.moddir)) > 0:
                     logutil.info('加载MOD…')
                 modloader.loadmods()
                 modloader.executemods()
@@ -1762,20 +1901,28 @@ class server():
                 mods = filesystemutil.getdirs(modloader.moddir)
                 for mod in mods:
                     if modloader.validatemod(mod):
-                        modinfo = modloader.getmodinfo(modloader.getmodinfopath(mod))
-                        imported = im.SourceFileLoader(mod, ''.join([modloader.getmodpath(mod), modinfo['modentry']])).load_module()
+                        modinfo = modloader.getmodinfo(
+                            modloader.getmodinfopath(mod))
+                        imported = im.SourceFileLoader(
+                            mod, ''.join([
+                                modloader.getmodpath(mod), modinfo['modentry']
+                            ])).load_module()
                         if not hasattr(imported, 'mod'):
-                            logutil.error(' '.join(['MOD', mod, '加载失败：缺少入口类 mod']))
+                            logutil.error(' '.join(
+                                ['MOD', mod, '加载失败：缺少入口类 mod']))
                             continue
                         if not hasattr(imported.mod, 'init'):
-                            logutil.error(' '.join(['MOD', mod, '加载失败：缺少初始化方法 init']))
+                            logutil.error(' '.join(
+                                ['MOD', mod, '加载失败：缺少初始化方法 init']))
                             continue
                         modloader.modclasses[mod] = imported.mod
 
             @staticmethod
             def executemods():
                 for _class in modloader.modclasses:
-                    if isinstance(modloader.modclasses[_class].__dict__['init'], staticmethod):
+                    if isinstance(
+                            modloader.modclasses[_class].__dict__['init'],
+                            staticmethod):
                         modloader.modclasses[_class].init()
                     else:
                         modloader.modclasses[_class]().init()
@@ -1784,20 +1931,30 @@ class server():
             def validatemod(mod):
                 infopath = modloader.getmodinfopath(mod)
                 if not filesystemutil.exists(infopath):
-                    logutil.error(' '.join(['MOD', mod, '加载失败：缺少MOD信息文件 ', modloader.infofile]))
+                    logutil.error(' '.join(
+                        ['MOD', mod, '加载失败：缺少MOD信息文件 ', modloader.infofile]))
                     return False
-                infolist = ['modname', 'modauthor', 'modentry', 'modversion', 'serverversion', 'license']
+                infolist = [
+                    'modname', 'modauthor', 'modentry', 'modversion',
+                    'serverversion', 'license'
+                ]
                 modinfo = modloader.getmodinfo(infopath)
                 for attr in infolist:
                     if not attr in modinfo:
-                        logutil.error(' '.join(['MOD', mod, '加载失败：在', modloader.infofile, '中缺少', attr]))
+                        logutil.error(' '.join([
+                            'MOD', mod, '加载失败：在', modloader.infofile, '中缺少',
+                            attr
+                        ]))
                         return False
                 entry = modinfo['modentry']
                 if filesystemutil.getextsion(entry) != 'py':
-                    logutil.error(' '.join(['MOD', mod, '加载失败：入口', entry, '非Py文件']))
+                    logutil.error(' '.join(
+                        ['MOD', mod, '加载失败：入口', entry, '非Py文件']))
                     return False
-                if not filesystemutil.exists(''.join([modloader.getmodpath(mod), entry])):
-                    logutil.error(' '.join(['MOD', mod, '加载失败：入口', entry, '文件不存在']))
+                if not filesystemutil.exists(''.join(
+                    [modloader.getmodpath(mod), entry])):
+                    logutil.error(' '.join(
+                        ['MOD', mod, '加载失败：入口', entry, '文件不存在']))
                     return False
                 if modinfo['serverversion'] != watermarkutil.version:
                     logutil.error(' '.join(['MOD', mod, '加载失败：与服务端版本不兼容']))
@@ -1835,12 +1992,16 @@ class server():
                     url = url.split('?retry=')[0]
                 if url in httprouter.onstatic:
                     for callback in httprouter.onstatic[url]:
-                        result = httprouter.onstatic[url][callback](ssid, url, body, result, resp)
+                        result = httprouter.onstatic[url][callback](ssid, url,
+                                                                    body,
+                                                                    result,
+                                                                    resp)
                 else:
                     for route in httprouter.ondynamic:
                         if url.find(route) != -1:
                             for callback in httprouter.ondynamic[route]:
-                                result = httprouter.ondynamic[route][callback](ssid, url, body, result, resp)
+                                result = httprouter.ondynamic[route][callback](
+                                    ssid, url, body, result, resp)
                 return result
 
         ################################****################################
@@ -1850,14 +2011,16 @@ class server():
             @staticmethod
             def init():
                 logutil.info('加载图片资源…')
-                imagerouter.onroute = databaseutil.loadimages(''.join([databaseutil.dbdir, 'images/']))
+                imagerouter.onroute = databaseutil.loadimages(''.join(
+                    [databaseutil.dbdir, 'images/']))
 
             @staticmethod
             def sendimage(ssid, url, body, result, resp):
                 path = filesystemutil.stripextension(url)
                 if path in imagerouter.onroute:
                     result = imagerouter.onroute[path]
-                    serverutil.wshttphandler.sendfile(ssid, url, body, result, resp)
+                    serverutil.wshttphandler.sendfile(ssid, url, body, result,
+                                                      resp)
 
             @staticmethod
             def getimage(ssid, url, body, result, resp):
@@ -1866,10 +2029,7 @@ class server():
         ################################****################################
         class itemeventrouter:
             onevent = {}
-            result = {
-                'warnings': [],
-                'profileChanges': {}
-            }
+            result = {'warnings': [], 'profileChanges': {}}
 
             @staticmethod
             def init():
@@ -1941,7 +2101,8 @@ class server():
                 logutil.info('启动服务器…')
                 httpserver.onrespond = serverresponse.getresponses()
                 hostandport = httpserver.gethostport()
-                backendserver = serverutil.wshttpserver(hostandport, serverutil.wshttphandler)
+                backendserver = serverutil.wshttpserver(
+                    hostandport, serverutil.wshttphandler)
                 backendserver.start()
                 logutil.success(' '.join(['服务器已开启，监听端口', str(hostandport[1])]))
 
@@ -1954,7 +2115,9 @@ class server():
             @staticmethod
             def getbackendurl():
                 hostandport = httpserver.gethostport()
-                return ''.join(['http://', hostandport[0], ':', str(hostandport[1])])
+                return ''.join(
+                    ['http://', hostandport[0], ':',
+                     str(hostandport[1])])
 
         ################################****################################
         class ragfairserver:
@@ -1978,7 +2141,8 @@ class server():
 
             @staticmethod
             def buildlinkeditems():
-                for item in list(databaseserver.tables['templates']['items'].values()):
+                for item in list(
+                        databaseserver.tables['templates']['items'].values()):
                     ragfairserver.getlinkeditems(item['_id'])
                     slots = ragfairserver.getfilters(item, 'Slots')
                     chambers = ragfairserver.getfilters(item, 'Chambers')
@@ -2014,24 +2178,32 @@ class server():
             @staticmethod
             def generatestaticprices():
                 for itemtpl in databaseserver.tables['templates']['items']:
-                    ragfairserver.staticprices[itemtpl] = round(handbookcontroller.gettemplateprice(itemtpl))
+                    ragfairserver.staticprices[itemtpl] = round(
+                        handbookcontroller.gettemplateprice(itemtpl))
 
             @staticmethod
             def generatedynamicprices():
-                dynamicprices = { **ragfairserver.staticprices, **databaseserver.tables['templates']['prices'] }
+                dynamicprices = {
+                    **ragfairserver.staticprices,
+                    **databaseserver.tables['templates']['prices']
+                }
                 for itemtpl in dynamicprices:
                     if not dynamicprices[itemtpl]:
                         ragfairserver.dynamicprices[itemtpl] = 1
                     else:
-                        ragfairserver.dynamicprices[itemtpl] = dynamicprices[itemtpl]
+                        ragfairserver.dynamicprices[itemtpl] = dynamicprices[
+                            itemtpl]
 
             @staticmethod
-            def generatedynamicoffers(expiredoffers = None):
-                assort = jsonutil.clone(databaseserver.tables['traders']['ragfair']['assort'])
+            def generatedynamicoffers(expiredoffers=None):
+                assort = jsonutil.clone(
+                    databaseserver.tables['traders']['ragfair']['assort'])
                 if expiredoffers:
                     assortitems = expiredoffers
                 else:
-                    assortitems = list(filter(lambda item: item['slotId'] == 'hideout', assort['items']))
+                    assortitems = list(
+                        filter(lambda item: item['slotId'] == 'hideout',
+                               assort['items']))
                 itemindex = 0
                 for item in assortitems:
                     itemid = item['_id']
@@ -2040,27 +2212,46 @@ class server():
                         continue
                     if ragfairserver.isitemindynamicblacklist(itemtpl):
                         continue
-                    if ragfairconfig.dynamic['blacklist']['enableQuestList'] and itemhelper.isquestitem(itemtpl):
+                    if ragfairconfig.dynamic['blacklist'][
+                            'enableQuestList'] and itemhelper.isquestitem(
+                                itemtpl):
                         continue
-                    if ragfairconfig.dynamic['blacklist']['enableBsgList'] and not itemhelper.cansellonragfair(itemtpl):
+                    if ragfairconfig.dynamic['blacklist'][
+                            'enableBsgList'] and not itemhelper.cansellonragfair(
+                                itemtpl):
                         continue
                     ispreset = presetcontroller.ispreset(itemid)
                     if ispreset:
                         items = ragfairserver.getpresetitems(item)
                     else:
-                        items = [*[item], *itemhelper.findandreturnchildrenbyassort(itemid, assort['items'])]
+                        items = [
+                            *[item], *itemhelper.findandreturnchildrenbyassort(
+                                itemid, assort['items'])
+                        ]
                     if expiredoffers:
                         itemcount = 1
                     else:
-                        itemcount = round(randomutil.getint(ragfairconfig.dynamic['offerItemCount']['min'], ragfairconfig.dynamic['offerItemCount']['max']))
+                        itemcount = round(
+                            randomutil.getint(
+                                ragfairconfig.dynamic['offerItemCount']['min'],
+                                ragfairconfig.dynamic['offerItemCount']
+                                ['max']))
                     for index in range(0, itemcount):
-                        items[0]['upd']['StackObjectsCount'] = ragfairserver.calculatedynamicstackcount(items[0]['_tpl'], ispreset)
+                        items[0]['upd'][
+                            'StackObjectsCount'] = ragfairserver.calculatedynamicstackcount(
+                                items[0]['_tpl'], ispreset)
                         userid = hashutil.generate()
                         valid, template = itemhelper.getitem(itemtpl)
-                        items = ragfairserver.getitemcondition(userid, items, template)
-                        barterscheme = ragfairserver.getofferrequirements(items)
+                        items = ragfairserver.getitemcondition(
+                            userid, items, template)
+                        barterscheme = ragfairserver.getofferrequirements(
+                            items)
                         price = ragfairserver.getbarterprice(barterscheme)
-                        ragfairserver.createoffer(userid, timeutil.gettimestamp(), items, barterscheme, assort['loyal_level_items'][item['_id']], price, ispreset)
+                        ragfairserver.createoffer(
+                            userid, timeutil.gettimestamp(), items,
+                            barterscheme,
+                            assort['loyal_level_items'][item['_id']], price,
+                            ispreset)
                     if expiredoffers:
                         del expiredoffers[itemindex]
                     itemindex += 1
@@ -2071,16 +2262,21 @@ class server():
 
             @staticmethod
             def getpresetitems(item):
-                preset = jsonutil.clone(databaseserver.tables['globals']['ItemPresets'][item['_id']]['_items'])
+                preset = jsonutil.clone(databaseserver.tables['globals']
+                                        ['ItemPresets'][item['_id']]['_items'])
                 return ragfairserver.reparentpresets(item, preset)
 
             @staticmethod
             def getpresetitemsbytpl(item):
                 presets = []
                 for itemid in databaseserver.tables['globals']['ItemPresets']:
-                    if databaseserver.tables['globals']['ItemPresets'][itemid]['_items'][0]['_tpl'] == item['_tpl']:
-                        preset = jsonutil.clone(databaseserver.tables['globals']['ItemPresets'][item['_id']]['_items'])
-                        presets.push(ragfairserver.reparentpresets(item, preset))
+                    if databaseserver.tables['globals']['ItemPresets'][itemid][
+                            '_items'][0]['_tpl'] == item['_tpl']:
+                        preset = jsonutil.clone(
+                            databaseserver.tables['globals']['ItemPresets'][
+                                item['_id']]['_items'])
+                        presets.push(
+                            ragfairserver.reparentpresets(item, preset))
                 return presets
 
             @staticmethod
@@ -2104,38 +2300,61 @@ class server():
                 valid, template = itemhelper.getitem(tpl)
                 if not valid:
                     raise ' '.join(['未找到TPL为', tpl, '的物品，无法为其生成随机数量'])
-                if ispreset or itemhelper.doesitemorparentsidmatch(template['_id'], ragfairconfig.dynamic['showAsSingleStack']):
+                if ispreset or itemhelper.doesitemorparentsidmatch(
+                        template['_id'],
+                        ragfairconfig.dynamic['showAsSingleStack']):
                     return 1
-                if not 'StackMaxSize' in template['_props'] or template['_props']['StackMaxSize'] == 1:
-                    return round(randomutil.getint(ragfairconfig.dynamic['nonStackableCount']['min'], ragfairconfig.dynamic['nonStackableCount']['max']))
-                stackPercent = round(randomutil.getint(ragfairconfig.dynamic['stackablePercent']['min'], ragfairconfig.dynamic['stackablePercent']['max']))
-                return round((template['_props']['StackMaxSize'] / 100) * stackPercent)
+                if not 'StackMaxSize' in template['_props'] or template[
+                        '_props']['StackMaxSize'] == 1:
+                    return round(
+                        randomutil.getint(
+                            ragfairconfig.dynamic['nonStackableCount']['min'],
+                            ragfairconfig.dynamic['nonStackableCount']['max']))
+                stackPercent = round(
+                    randomutil.getint(
+                        ragfairconfig.dynamic['stackablePercent']['min'],
+                        ragfairconfig.dynamic['stackablePercent']['max']))
+                return round(
+                    (template['_props']['StackMaxSize'] / 100) * stackPercent)
 
             @staticmethod
             def getitemcondition(userid, items, template):
                 item = ragfairserver.addmissingcondition(items[0])
-                if not ragfairserver.isplayer(userid) and not ragfairserver.istrader(userid):
-                    if randomutil.getint(0, 99) < ragfairconfig.dynamic['condition']['conditionChance'] * 100:
-                        multiplier = randomutil.getfloat(ragfairconfig.dynamic['condition']['min'], ragfairconfig.dynamic['condition']['max'])
+                if not ragfairserver.isplayer(
+                        userid) and not ragfairserver.istrader(userid):
+                    if randomutil.getint(0, 99) < ragfairconfig.dynamic[
+                            'condition']['conditionChance'] * 100:
+                        multiplier = randomutil.getfloat(
+                            ragfairconfig.dynamic['condition']['min'],
+                            ragfairconfig.dynamic['condition']['max'])
                         if 'Repairable' in item['upd']:
-                            if 'armorClass' in template['_props'] and template['_props']['armorClass'] != '0':
-                                item['upd']['Repairable']['Durability'] = round(item['upd']['Repairable']['Durability'] * multiplier) or 1
-                            if 'armorClass' :
-                                item['upd']['Repairable']['Durability'] = round(item['upd']['Repairable']['Durability'] * multiplier) or 1
+                            if 'armorClass' in template['_props'] and template[
+                                    '_props']['armorClass'] != '0':
+                                item['upd']['Repairable']['Durability'] = round(
+                                    item['upd']['Repairable']['Durability'] *
+                                    multiplier) or 1
+                            if 'armorClass':
+                                item['upd']['Repairable']['Durability'] = round(
+                                    item['upd']['Repairable']['Durability'] *
+                                    multiplier) or 1
                         if 'MedKit' in item['upd']:
-                            item['upd']['MedKit']['HpResource'] = round(item['upd']['MedKit']['HpResource'] * multiplier) or 1
+                            item['upd']['MedKit']['HpResource'] = round(
+                                item['upd']['MedKit']['HpResource'] *
+                                multiplier) or 1
                 items[0] = item
                 return items
 
             @staticmethod
             def addmissingcondition(item):
                 valid, template = itemhelper.getitem(item['_tpl'])
-                if 'Durability' in template['_props'] and template['_props']['Durability'] > 0:
+                if 'Durability' in template[
+                        '_props'] and template['_props']['Durability'] > 0:
                     item['upd']['Repairable'] = {
                         'Durability': template['_props']['Durability'],
                         'MaxDurability': template['_props']['Durability']
                     }
-                if 'MaxHpResource' in template['_props'] and template['_props']['MaxHpResource'] > 0:
+                if 'MaxHpResource' in template[
+                        '_props'] and template['_props']['MaxHpResource'] > 0:
                     item['upd']['MedKit'] = {
                         'HpResource': template['_props']['MaxHpResource']
                     }
@@ -2155,10 +2374,7 @@ class server():
             def getofferrequirements(items):
                 currency = ragfairserver.getdynamicoffercurrency()
                 price = ragfairserver.getdynamicofferprice(items, currency)
-                return [{
-                    'count': price,
-                    '_tpl': currency
-                }]
+                return [{'count': price, '_tpl': currency}]
 
             @staticmethod
             def getdynamicoffercurrency():
@@ -2174,21 +2390,33 @@ class server():
                 price = 0
                 endloop = False
                 for item in items:
-                    if not item['_tpl'] in ragfairserver.dynamicprices or ragfairserver.dynamicprices[item['_tpl']] == 1:
-                        itemdynamicprice = handbookcontroller.gettemplateprice(item['_tpl'])
+                    if not item[
+                            '_tpl'] in ragfairserver.dynamicprices or ragfairserver.dynamicprices[
+                                item['_tpl']] == 1:
+                        itemdynamicprice = handbookcontroller.gettemplateprice(
+                            item['_tpl'])
                     else:
-                        itemdynamicprice = ragfairserver.dynamicprices[item['_tpl']]
+                        itemdynamicprice = ragfairserver.dynamicprices[
+                            item['_tpl']]
                     valid, template = itemhelper.getitem(item['_tpl'])
-                    if presetcontroller.ispreset(item['_id']) and 'weapFireType' in template['_props']:
-                        itemdynamicprice = ragfairserver.getweaponpresetprice(item, items, itemdynamicprice)
+                    if presetcontroller.ispreset(
+                            item['_id']
+                    ) and 'weapFireType' in template['_props']:
+                        itemdynamicprice = ragfairserver.getweaponpresetprice(
+                            item, items, itemdynamicprice)
                         endloop = True
                     if currency != itemhelper.MONEY()['Roubles']:
-                        itemdynamicprice = paymentcontroller.fromrub(itemdynamicprice, currency)
-                    itemqualitymodifier = itemhelper.getitemqualitymodifier(item)
+                        itemdynamicprice = paymentcontroller.fromrub(
+                            itemdynamicprice, currency)
+                    itemqualitymodifier = itemhelper.getitemqualitymodifier(
+                        item)
                     price += itemdynamicprice * itemqualitymodifier
                     if endloop:
                         break
-                price = round(price * randomutil.getfloat(ragfairconfig.dynamic['price']['min'], ragfairconfig.dynamic['price']['max']))
+                price = round(
+                    price *
+                    randomutil.getfloat(ragfairconfig.dynamic['price']['min'],
+                                        ragfairconfig.dynamic['price']['max']))
                 if price < 1:
                     price = 1
                 return price
@@ -2199,20 +2427,33 @@ class server():
                 if len(presets) == 0:
                     logutil.warning(' '.join(['物品', item['_tpl'], '没有预设']))
                     return price
-                defaultpreset = list(filter(lambda i: '_encyclopedia' in i, presets))
+                defaultpreset = list(
+                    filter(lambda i: '_encyclopedia' in i, presets))
                 if len(defaultpreset) == 0:
                     defaultpreset = presets[0]
                 else:
                     defaultpreset = defaultpreset[0]
-                neworreplacedmods = list(filter(lambda i: len(list(filter(lambda j: i['_tpl'] == j['_tpl'], defaultpreset['_items']))) == 0, items))
+                neworreplacedmods = list(
+                    filter(
+                        lambda i: len(
+                            list(
+                                filter(lambda j: i['_tpl'] == j['_tpl'],
+                                       defaultpreset['_items']))) == 0, items))
                 extramodsprice = 0
                 for mod in neworreplacedmods:
                     extramodsprice += ragfairserver.dynamicprices[mod['_tpl']]
                 if len(neworreplacedmods) >= 1:
-                    replacedmods = list(filter(lambda i: len(list(filter(lambda j: i['_tpl'] == j['_tpl'], defaultpreset['_items']))) == 0, neworreplacedmods))
+                    replacedmods = list(
+                        filter(
+                            lambda i: len(
+                                list(
+                                    filter(lambda j: i['_tpl'] == j['_tpl'],
+                                           defaultpreset['_items']))) == 0,
+                            neworreplacedmods))
                     replacedmodsprice = 0
                     for mod in replacedmods:
-                        replacedmodsprice += ragfairserver.dynamicprices[mod['_tpl']]
+                        replacedmodsprice += ragfairserver.dynamicprices[
+                            mod['_tpl']]
                     extramodsprice -= replacedmodsprice
                 return price + extramodsprice
 
@@ -2220,11 +2461,18 @@ class server():
             def getbarterprice(barterscheme):
                 price = 0
                 for item in barterscheme:
-                    price += ragfairserver.staticprices[item['_tpl']] * item['count']
+                    price += ragfairserver.staticprices[
+                        item['_tpl']] * item['count']
                 return round(price)
 
             @staticmethod
-            def createoffer(userid, timestamp, items, barterscheme, loyallevel, price, sellinonepiece = False):
+            def createoffer(userid,
+                            timestamp,
+                            items,
+                            barterscheme,
+                            loyallevel,
+                            price,
+                            sellinonepiece=False):
                 offer = {
                     '_id': ragfairserver.getofferid(userid, items),
                     'intId': 0,
@@ -2233,7 +2481,8 @@ class server():
                         'memberType': ragfairserver.getmembertype(userid),
                         'nickname': ragfairserver.getnickname(userid),
                         'rating': ragfairserver.getrating(userid),
-                        'isRatingGrowing': ragfairserver.getratinggrowing(userid),
+                        'isRatingGrowing':
+                        ragfairserver.getratinggrowing(userid),
                         'avatar': ragfairserver.gettraderavatar(userid)
                     },
                     'root': items[0]['_id'],
@@ -2243,7 +2492,8 @@ class server():
                     'itemsCost': price,
                     'summaryCost': price,
                     'startTime': timestamp,
-                    'endTime': ragfairserver.getofferendtime(userid, timestamp),
+                    'endTime':
+                    ragfairserver.getofferendtime(userid, timestamp),
                     'loyaltyLevel': loyallevel,
                     'sellInOnePiece': sellinonepiece,
                     'priority': False
@@ -2260,13 +2510,15 @@ class server():
             @staticmethod
             def gettraderid(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc']['_id']
+                    return saveserver.profiles[userid]['characters']['pmc'][
+                        '_id']
                 return userid
 
             @staticmethod
             def getmembertype(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc']['Info']['AccountType']
+                    return saveserver.profiles[userid]['characters']['pmc'][
+                        'Info']['AccountType']
                 if ragfairserver.istrader(userid):
                     return 4
                 return 0
@@ -2274,15 +2526,19 @@ class server():
             @staticmethod
             def getnickname(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc']['Info']['Nickname']
+                    return saveserver.profiles[userid]['characters']['pmc'][
+                        'Info']['Nickname']
                 if ragfairserver.istrader(userid):
-                    return databaseserver.tables['traders'][userid]['base']['nickname']
+                    return databaseserver.tables['traders'][userid]['base'][
+                        'nickname']
                 if randomutil.getbool():
                     side = 'usec'
                 else:
                     side = 'bear'
                 while True:
-                    name = randomutil.getlistelement(databaseserver.tables['bots']['types'][side]['firstName'])
+                    name = randomutil.getlistelement(
+                        databaseserver.tables['bots']['types'][side]
+                        ['firstName'])
                     if len(name) <= 15:
                         break
                 return name
@@ -2290,15 +2546,19 @@ class server():
             @staticmethod
             def getrating(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc']['RagfairInfo']['rating']
+                    return saveserver.profiles[userid]['characters']['pmc'][
+                        'RagfairInfo']['rating']
                 if ragfairserver.istrader(userid):
                     return 1
-                return randomutil.getfloat(ragfairconfig.dynamic['rating']['min'], ragfairconfig.dynamic['rating']['max'])
+                return randomutil.getfloat(
+                    ragfairconfig.dynamic['rating']['min'],
+                    ragfairconfig.dynamic['rating']['max'])
 
             @staticmethod
             def getratinggrowing(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc']['RagfairInfo']['isRatingGrowing']
+                    return saveserver.profiles[userid]['characters']['pmc'][
+                        'RagfairInfo']['isRatingGrowing']
                 if ragfairserver.istrader(userid):
                     return True
                 return randomutil.getbool()
@@ -2306,16 +2566,21 @@ class server():
             @staticmethod
             def gettraderavatar(userid):
                 if ragfairserver.istrader(userid):
-                    return databaseserver.tables['traders'][userid]['base']['avatar']
-                return databaseserver.tables['traders']['ragfair']['base']['avatar']
+                    return databaseserver.tables['traders'][userid]['base'][
+                        'avatar']
+                return databaseserver.tables['traders']['ragfair']['base'][
+                    'avatar']
 
             @staticmethod
             def getofferendtime(userid, timestamp):
                 if ragfairserver.isplayer(userid):
                     return timestamp + round(12 * 3600)
                 if ragfairserver.istrader(userid):
-                    return databaseserver.tables['traders'][userid]['base']['nextResupply']
-                return round(timestamp + randomutil.getint(ragfairconfig.dynamic['endTimeSeconds']['min'], ragfairconfig.dynamic['endTimeSeconds']['max']))
+                    return databaseserver.tables['traders'][userid]['base'][
+                        'nextResupply']
+                return round(timestamp + randomutil.getint(
+                    ragfairconfig.dynamic['endTimeSeconds']['min'],
+                    ragfairconfig.dynamic['endTimeSeconds']['max']))
 
             @staticmethod
             def addtraders():
@@ -2323,7 +2588,8 @@ class server():
                     if not trader in ragfairconfig.traders:
                         ragfairserver.traders[trader] = False
                     else:
-                        ragfairserver.traders[trader] = ragfairconfig.traders[trader]
+                        ragfairserver.traders[trader] = ragfairconfig.traders[
+                            trader]
 
             @staticmethod
             def update():
@@ -2333,9 +2599,12 @@ class server():
                     if ragfairserver.isexpired(offer, time):
                         if ragfairserver.istrader(offer['user']['id']):
                             ragfairserver.traders[offer['user']['id']] = True
-                        elif not ragfairserver.isplayer(re.sub(r'^pmc', '', offer['user']['id'])):
-                            ragfairserver.exipredoffers.append(offer['items'][0])
-                        if ragfairserver.isplayer(re.sub(r'^pmc', '', offer['user']['id'])):
+                        elif not ragfairserver.isplayer(
+                                re.sub(r'^pmc', '', offer['user']['id'])):
+                            ragfairserver.exipredoffers.append(
+                                offer['items'][0])
+                        if ragfairserver.isplayer(
+                                re.sub(r'^pmc', '', offer['user']['id'])):
                             ragfairserver.returnplayeroffer(offer)
                         del ragfairserver.offers[offerindex]
                         offerindex += 1
@@ -2343,9 +2612,11 @@ class server():
                     if ragfairserver.traders[trader]:
                         ragfairserver.generatetraderoffers(trader)
                         ragfairserver.traders[trader] = False
-                if len(ragfairserver.exipredoffers) >= ragfairconfig.dynamic['expiredOfferThreshold']:
+                if len(ragfairserver.exipredoffers
+                       ) >= ragfairconfig.dynamic['expiredOfferThreshold']:
                     ragfairserver.generatedynamicprices()
-                    ragfairserver.generatedynamicoffers(ragfairserver.exipredoffers)
+                    ragfairserver.generatedynamicoffers(
+                        ragfairserver.exipredoffers)
                 for offer in ragfairserver.offers:
                     ragfairserver.categories[offer['items'][0]['_tpl']] = 1
                 ragfairserver.buildrequireditemtable()
@@ -2358,7 +2629,8 @@ class server():
                         if paymentcontroller.ismoneytpl(requireditemtpl):
                             continue
                         ragfairserver.getrequireditems(requireditemtpl)
-                        ragfairserver.applyrequireditems(requireditemtpl, offer)
+                        ragfairserver.applyrequireditems(
+                            requireditemtpl, offer)
 
             @staticmethod
             def getrequireditems(tpl):
@@ -2372,11 +2644,14 @@ class server():
 
             @staticmethod
             def isexpired(offer, time):
-                return offer['endTime'] < time or offer['items'][0]['upd']['StackObjectsCount'] < 1
+                return offer['endTime'] < time or offer['items'][0]['upd'][
+                    'StackObjectsCount'] < 1
 
             @staticmethod
             def generatetraderoffers(trader):
-                ragfairserver.offers = list(filter(lambda o: o['user']['id'] != trader, ragfairserver.offers))
+                ragfairserver.offers = list(
+                    filter(lambda o: o['user']['id'] != trader,
+                           ragfairserver.offers))
                 time = timeutil.gettimestamp()
                 assort = databaseserver.tables['traders'][trader]['assort']
                 for item in assort['items']:
@@ -2386,11 +2661,15 @@ class server():
                     if ispreset:
                         items = ragfairserver.getpresetitems(item)
                     else:
-                        items = [*[item], *itemhelper.findandreturnchildrenbyassort(item['_id'], assort['items'])]
+                        items = [
+                            *[item], *itemhelper.findandreturnchildrenbyassort(
+                                item['_id'], assort['items'])
+                        ]
                     barterscheme = assort['barter_scheme'][item['_id']][0]
                     loyallevel = assort['loyal_level_items'][item['_id']]
                     price = ragfairserver.getbarterprice(barterscheme)
-                    ragfairserver.createoffer(trader, time, items, barterscheme, loyallevel, price)
+                    ragfairserver.createoffer(trader, time, items,
+                                              barterscheme, loyallevel, price)
 
             @staticmethod
             def addplayeroffers():
@@ -2401,22 +2680,30 @@ class server():
                 offercount = len(profile['RagfairInfo']['offers'])
                 if offercount == 0:
                     return
-                profile = profilecontroller.getprofilebypmcid(offer['user']['id'])
+                profile = profilecontroller.getprofilebypmcid(
+                    offer['user']['id'])
                 for index in range(0, offercount + 1):
                     if index == offercount:
-                        logutil.warning(' '.join(['未找到ID为', offer['_id'], '的报价']))
-                        return httputil.appenderror(itemeventrouter.getresult(profile['aid']), '报价不存在', '错误')
-                    if profile['RagfairInfo']['offers'][index]['_id'] == offer['_id']:
+                        logutil.warning(' '.join(
+                            ['未找到ID为', offer['_id'], '的报价']))
+                        return httputil.appenderror(
+                            itemeventrouter.getresult(profile['aid']), '报价不存在',
+                            '错误')
+                    if profile['RagfairInfo']['offers'][index]['_id'] == offer[
+                            '_id']:
                         break
-                if offer['items'][0]['upd']['StackObjectsCount'] > offer['items'][0]['upd']['OriginalStackObjectsCount']:
-                    offer['items'][0]['upd']['StackObjectsCount'] = offer['items'][0]['upd']['OriginalStackObjectsCount']
+                if offer['items'][0]['upd']['StackObjectsCount'] > offer[
+                        'items'][0]['upd']['OriginalStackObjectsCount']:
+                    offer['items'][0]['upd']['StackObjectsCount'] = offer[
+                        'items'][0]['upd']['OriginalStackObjectsCount']
                 del offer['items'][0]['upd']['OriginalStackObjectsCount']
                 ragfaircontroller.returnitems(profile['aid'], offer['items'])
                 del profile['RagfairInfo']['offers'][index]
                 offercount = len(ragfairserver.offers)
                 for index in range(0, offercount + 1):
                     if index == offercount:
-                        logutil.warning(' '.join(['未找到ID为', offer['_id'], '的报价']))
+                        logutil.warning(' '.join(
+                            ['未找到ID为', offer['_id'], '的报价']))
                     if ragfairserver.offers[index]['_id'] == offer['_id']:
                         break
                 del ragfairserver.offers[index]
@@ -2434,7 +2721,11 @@ class server():
                 saveserver.initfunctions = saveinitfunctions.getfunctions()
                 if not filesystemutil.exists(saveserver.profilesdir):
                     filesystemutil.makedir(saveserver.profilesdir)
-                profiles = [file for file in filesystemutil.getfiles(saveserver.profilesdir) if filesystemutil.getextsion(file) == 'json']
+                profiles = [
+                    file
+                    for file in filesystemutil.getfiles(saveserver.profilesdir)
+                    if filesystemutil.getextsion(file) == 'json'
+                ]
                 for profile in profiles:
                     saveserver.loadprofile(filesystemutil.getfilename(profile))
                 ragfairserver.addplayeroffers()
@@ -2449,7 +2740,8 @@ class server():
             def loadprofile(ssid):
                 profile = ''.join([saveserver.profilesdir, ssid, '.json'])
                 if filesystemutil.exists(profile):
-                    saveserver.profiles[ssid] = jsonutil.parse(filesystemutil.readfile(profile))
+                    saveserver.profiles[ssid] = jsonutil.parse(
+                        filesystemutil.readfile(profile))
                 for function in saveserver.initfunctions:
                     saveserver.initfunctions[function](ssid)
 
@@ -2458,7 +2750,8 @@ class server():
                 profile = ''.join([saveserver.profilesdir, ssid, '.json'])
                 jsonprofile = jsonutil.unparse(saveserver.profiles[ssid], True)
                 jsonprofilemd5 = hashutil.generatemd5(jsonprofile)
-                if not ssid in saveserver.profilemd5 or saveserver.profilemd5[ssid] != jsonprofilemd5:
+                if not ssid in saveserver.profilemd5 or saveserver.profilemd5[
+                        ssid] != jsonprofilemd5:
                     saveserver.profilemd5[ssid] = jsonprofilemd5
                     filesystemutil.writefile(profile, jsonprofile)
 
@@ -2476,17 +2769,21 @@ class server():
                 logutil.info('初始化服务端…')
                 for function in initializer.initfunctions:
                     initializer.initfunctions[function]()
-                taskutil.setloop(func = initializer.update)
+                taskutil.setloop(func=initializer.update)
 
             @staticmethod
             def update():
                 for function in initializer.updfunctions:
                     if not function in initializer.updlastruntime:
-                        initializer.updlastruntime[function] = timeutil.gettimestamp()
-                    timesincelastrun = timeutil.gettimestamp() - initializer.updlastruntime[function]
-                    success = initializer.updfunctions[function](timesincelastrun)
+                        initializer.updlastruntime[
+                            function] = timeutil.gettimestamp()
+                    timesincelastrun = timeutil.gettimestamp(
+                    ) - initializer.updlastruntime[function]
+                    success = initializer.updfunctions[function](
+                        timesincelastrun)
                     if success:
-                        initializer.updlastruntime[function] = timeutil.gettimestamp()
+                        initializer.updlastruntime[
+                            function] = timeutil.gettimestamp()
                     if success == None and timesincelastrun % 300 == 0:
                         logutil.error(' '.join(['定时事件', function, '执行失败']))
 
@@ -2500,7 +2797,8 @@ class server():
             @staticmethod
             def init():
                 logutil.info('加载数据文件…')
-                databaseserver.tables = databaseutil.loadjsons(''.join([databaseutil.dbdir, 'database/']))
+                databaseserver.tables = databaseutil.loadjsons(''.join(
+                    [databaseutil.dbdir, 'database/']))
 
             @staticmethod
             def loadjsons(path):
@@ -2509,37 +2807,39 @@ class server():
                 dirs = filesystemutil.getdirs(path)
                 for file in files:
                     if filesystemutil.getextsion(file) == 'json':
-                        result[filesystemutil.getfilename(file)] = jsonutil.parse(filesystemutil.readfile(''.join([path, file])))
+                        result[filesystemutil.getfilename(
+                            file)] = jsonutil.parse(
+                                filesystemutil.readfile(''.join([path, file])))
                 for dir in dirs:
-                    result[dir] = databaseutil.loadjsons(''.join([path, dir, '/']))
+                    result[dir] = databaseutil.loadjsons(''.join(
+                        [path, dir, '/']))
                 return result
 
             @staticmethod
             def loadimages(path):
                 result = {}
                 dirs = filesystemutil.getdirs(path)
-                routes = (
-                    '/files/CONTENT/banners/',
-                    '/files/handbook/',
-                    '/files/Hideout/',
-                    '/files/launcher/',
-                    '/files/quest/icon/',
-                    '/files/trader/avatar/'
-                )
+                routes = ('/files/CONTENT/banners/', '/files/handbook/',
+                          '/files/Hideout/', '/files/launcher/',
+                          '/files/quest/icon/', '/files/trader/avatar/')
                 for i in range(0, len(dirs) - 1):
                     dirpath = ''.join([path, dirs[i]])
                     files = filesystemutil.getfiles(''.join([dirpath, '/']))
                     for file in files:
-                        result[''.join([routes[i], filesystemutil.stripextension(file)])] = '/'.join([dirpath, file])
+                        result[''.join([
+                            routes[i],
+                            filesystemutil.stripextension(file)
+                        ])] = '/'.join([dirpath, file])
                 result['/favicon.ico'] = ''.join([path, 'icon.ico'])
                 return result
 
         ################################****################################
         class filesystemutil:
+
             @staticmethod
             def init():
                 pass
-            
+
             @staticmethod
             def exists(path):
                 return os.path.exists(path)
@@ -2550,29 +2850,35 @@ class server():
 
             @staticmethod
             def readfile(path):
-                with open(path, 'r', encoding = 'utf-8') as file:
+                with open(path, 'r', encoding='utf-8') as file:
                     read = file.read()
                 return read
 
             @staticmethod
-            def writefile(path, data, append = False):
+            def writefile(path, data, append=False):
                 if not filesystemutil.exists(path):
                     with open(path, 'w') as file:
                         file.write('')
                 if append:
-                    with open(path, 'a', encoding = 'utf-8') as file:
+                    with open(path, 'a', encoding='utf-8') as file:
                         file.write(data)
                 else:
-                    with open(path, 'w', encoding = 'utf-8') as file:
+                    with open(path, 'w', encoding='utf-8') as file:
                         file.write(data)
 
             @staticmethod
             def getfiles(path):
-                return [file for file in os.listdir(path) if os.path.isfile(''.join([path, file]))]
+                return [
+                    file for file in os.listdir(path)
+                    if os.path.isfile(''.join([path, file]))
+                ]
 
             @staticmethod
             def getdirs(path):
-                return [dir for dir in os.listdir(path) if os.path.isdir(''.join([path, dir]))]
+                return [
+                    dir for dir in os.listdir(path)
+                    if os.path.isdir(''.join([path, dir]))
+                ]
 
             @staticmethod
             def getfiledir(path):
@@ -2592,6 +2898,7 @@ class server():
 
         ################################****################################
         class hashutil:
+
             @staticmethod
             def init():
                 pass
@@ -2599,7 +2906,8 @@ class server():
             @staticmethod
             def generate():
                 randomtime = ra.uniform(0, 1) * timeutil.gettimestamp()
-                return hl.sha1(str(randomtime).encode('utf-8')).hexdigest()[:24]
+                return hl.sha1(
+                    str(randomtime).encode('utf-8')).hexdigest()[:24]
 
             @staticmethod
             def generatemd5(data):
@@ -2607,24 +2915,28 @@ class server():
 
         ################################****################################
         class httputil:
+
             @staticmethod
             def init():
                 pass
 
             @staticmethod
             def getclearedstring(str):
-                return str.replace('\b', '').replace('\f', '').replace('\n', '').replace('\r', '').replace('\t', '').replace('\\', '')
+                return str.replace('\b', '').replace('\f', '').replace(
+                    '\n', '').replace('\r', '').replace('\t',
+                                                        '').replace('\\', '')
 
             @staticmethod
             def getnobody(data):
                 return httputil.getclearedstring(jsonutil.unparse(data))
 
             @staticmethod
-            def getclearedbody(data, err = 0, msg = None):
-                return httputil.getclearedstring(httputil.getunclearedbody(data, err, msg))
+            def getclearedbody(data, err=0, msg=None):
+                return httputil.getclearedstring(
+                    httputil.getunclearedbody(data, err, msg))
 
             @staticmethod
-            def getunclearedbody(data, err = 0, msg = None):
+            def getunclearedbody(data, err=0, msg=None):
                 return jsonutil.unparse({
                     'err': err,
                     'errmsg': msg,
@@ -2644,7 +2956,9 @@ class server():
                 return httputil.getclearedbody([])
 
             @staticmethod
-            def appenderror(result, msg = 'An unknown error occurred', title = 'Error'):
+            def appenderror(result,
+                            msg='An unknown error occurred',
+                            title='Error'):
                 result['warnings'] = [{
                     'index': 0,
                     'err': title,
@@ -2654,14 +2968,16 @@ class server():
 
         ################################****################################
         class jsonutil:
+
             @staticmethod
             def init():
                 pass
-            
+
             @staticmethod
-            def unparse(data, beautify = False):
+            def unparse(data, beautify=False):
                 if beautify:
-                    return js.dumps(data, option = js.OPT_INDENT_2).decode('utf-8')
+                    return js.dumps(data,
+                                    option=js.OPT_INDENT_2).decode('utf-8')
                 return js.dumps(data).decode('utf-8')
 
             @staticmethod
@@ -2698,8 +3014,10 @@ class server():
 
             @staticmethod
             def init():
-                if not filesystemutil.exists(filesystemutil.getfiledir(logutil.logfile)):
-                    filesystemutil.makedir(filesystemutil.getfiledir(logutil.logfile))
+                if not filesystemutil.exists(
+                        filesystemutil.getfiledir(logutil.logfile)):
+                    filesystemutil.makedir(
+                        filesystemutil.getfiledir(logutil.logfile))
                 filesystemutil.writefile(logutil.logfile, '')
                 sys.excepthook = logutil.handle
 
@@ -2712,12 +3030,15 @@ class server():
 
             @staticmethod
             def write(data):
-                filesystemutil.writefile(logutil.logfile, ''.join([data, '\n']), True)
+                filesystemutil.writefile(logutil.logfile,
+                                         ''.join([data, '\n']), True)
 
             @staticmethod
-            def log(data, front = '', back = ''):
-                frontcolor = logutil.frontcolor[front] if front in logutil.frontcolor else ''
-                backcolor = logutil.backcolor[back] if back in logutil.backcolor else ''
+            def log(data, front='', back=''):
+                frontcolor = logutil.frontcolor[
+                    front] if front in logutil.frontcolor else ''
+                backcolor = logutil.backcolor[
+                    back] if back in logutil.backcolor else ''
                 colors = ''.join([frontcolor, backcolor])
                 if colors:
                     print(''.join([colors, data, '\x1b[0m']))
@@ -2743,6 +3064,7 @@ class server():
 
         ################################****################################
         class randomutil:
+
             @staticmethod
             def init():
                 pass
@@ -2773,18 +3095,22 @@ class server():
 
         ################################****################################
         class serverutil:
+
             class wshttpserver(hsv.HTTPServer, wsv.WebsocketServer):
+
                 @staticmethod
                 def init():
                     pass
 
                 ''' SEALED FUNCTIONS, DO NOT MODIFY OR OVERRIDE '''
-                def __init__(self, addr = ('127.0.0.1', 80), handler = None):
+
+                def __init__(self, addr=('127.0.0.1', 80), handler=None):
                     ''' 
                     SEALED FUNCTION,
                     DO NOT MODIFY OR OVERRIDE.
                     '''
-                    if sk.socket(sk.AF_INET, sk.SOCK_STREAM).connect_ex(addr) == 0:
+                    if sk.socket(sk.AF_INET,
+                                 sk.SOCK_STREAM).connect_ex(addr) == 0:
                         raise Exception(' '.join(['端口', str(addr[1]), '已被占用']))
                     hsv.HTTPServer.__init__(self, addr, handler)
                     self.host = addr[0]
@@ -2801,10 +3127,14 @@ class server():
                     SEALED FUNCTION,
                     DO NOT MODIFY OR OVERRIDE.
                     '''
-                    taskutil.setloop(time = 60.0, func = serverutil.wshttphandler.wspingloop)
-                    taskutil.setasync(func = hsv.HTTPServer.serve_forever, args = (self, ))
+                    taskutil.setloop(time=60.0,
+                                     func=serverutil.wshttphandler.wspingloop)
+                    taskutil.setasync(func=hsv.HTTPServer.serve_forever,
+                                      args=(self, ))
 
-            class wshttphandler(hsv.BaseHTTPRequestHandler, wsv.WebSocketHandler):
+            class wshttphandler(hsv.BaseHTTPRequestHandler,
+                                wsv.WebSocketHandler):
+
                 @staticmethod
                 def init():
                     pass
@@ -2815,26 +3145,31 @@ class server():
                     if not result:
                         logutil.log(' '.join(['[无效]', url]), 'white', 'red')
                         #logutil.info(body)
-                        result = httputil.getclearedbody(None, 404, ' '.join(['未处理的请求:' + url]))
+                        result = httputil.getclearedbody(
+                            None, 404, ' '.join(['未处理的请求:', url]))
                     if result in httpserver.onrespond:
-                        httpserver.onrespond[result](ssid, url, body, result, resp)
+                        httpserver.onrespond[result](ssid, url, body, result,
+                                                     resp)
                     else:
-                        serverutil.wshttphandler.sendzlibjson(ssid, url, body, result, resp)
+                        serverutil.wshttphandler.sendzlibjson(
+                            ssid, url, body, result, resp)
 
                 @staticmethod
                 def sendzlibjson(ssid, url, body, result, resp):
-                    serverutil.wshttphandler.setheaders(200, 'OK', httpserver.mime['json'], ssid, resp)
+                    serverutil.wshttphandler.setheaders(
+                        200, 'OK', httpserver.mime['json'], ssid, resp)
                     serverutil.wshttphandler.stream(result, resp, True)
 
                 @staticmethod
                 def sendtextjson(ssid, url, body, result, resp):
-                    serverutil.wshttphandler.setheaders(200, 'OK', httpserver.mime['json'], ssid, resp)
+                    serverutil.wshttphandler.setheaders(
+                        200, 'OK', httpserver.mime['json'], ssid, resp)
                     serverutil.wshttphandler.stream(result, resp)
-                
+
                 @staticmethod
                 def sendmessage(ssid, url, body, result, resp):
                     pass
-                
+
                 @staticmethod
                 def sendfile(ssid, url, body, result, resp):
                     ext = result.split('.')[-1]
@@ -2842,7 +3177,8 @@ class server():
                         type = httpserver.mime[ext]
                     else:
                         type = httpserver.mime['txt']
-                    serverutil.wshttphandler.setheaders(200, 'OK', type, ssid, resp)
+                    serverutil.wshttphandler.setheaders(
+                        200, 'OK', type, ssid, resp)
                     with open(result, 'rb') as file:
                         data = file.read()
                     serverutil.wshttphandler.stream(data, resp)
@@ -2851,14 +3187,17 @@ class server():
                 def setheaders(code, msg, type, ssid, resp):
                     resp.send_response(code, msg)
                     resp.send_header('Content-Type', type)
-                    resp.send_header('Set-Cookie', ''.join(['PHPSESSID=', ssid]))
+                    resp.send_header('Set-Cookie',
+                                     ''.join(['PHPSESSID=', ssid]))
                     resp.end_headers()
 
                 @staticmethod
-                def stream(data, resp, zlib = False):
+                def stream(data, resp, zlib=False):
                     fbytes = io.BytesIO()
                     if zlib:
-                        fbytes.write(zl.compress(data.encode(encoding = 'utf-8'), zl.DEFLATED))
+                        fbytes.write(
+                            zl.compress(data.encode(encoding='utf-8'),
+                                        zl.DEFLATED))
                     else:
                         fbytes.write(data)
                     fbytes.seek(0)
@@ -2866,12 +3205,10 @@ class server():
 
                 @staticmethod
                 def wspingloop():
-                    pingmessage = {
-                        'type': 'ping',
-                        'eventId': 'ping'
-                    }
+                    pingmessage = {'type': 'ping', 'eventId': 'ping'}
                     for cs in httpserver.wspinghandler:
-                        cs[1].send_message(cs[0], jsonutil.unparse(pingmessage))
+                        cs[1].send_message(cs[0],
+                                           jsonutil.unparse(pingmessage))
                         logutil.info('')
 
                 @staticmethod
@@ -2891,6 +3228,7 @@ class server():
                             csindex += 1
 
                 ''' SEALED FUNCTIONS, DO NOT MODIFY OR OVERRIDE '''
+
                 def __init__(self, socket, addr, server):
                     ''' 
                     SEALED FUNCTION,
@@ -2898,7 +3236,8 @@ class server():
                     '''
                     self.default_request_version = 'HTTP/1.1'
                     self._send_lock = th.Lock()
-                    hsv.BaseHTTPRequestHandler.__init__(self, socket, addr, server)
+                    hsv.BaseHTTPRequestHandler.__init__(
+                        self, socket, addr, server)
 
                 def GET(self):
                     ''' 
@@ -2908,10 +3247,14 @@ class server():
                     url = self.path
                     ssidattr = 'PHPSESSID'
                     cookies = self.getcookies()
-                    ssid = str(cookies[ssidattr])[str(cookies[ssidattr]).find(ssidattr) + len(ssidattr) + 1:] if ssidattr in cookies else ''
+                    ssid = str(cookies[ssidattr]
+                               )[str(cookies[ssidattr]).find(ssidattr) +
+                                 len(ssidattr) +
+                                 1:] if ssidattr in cookies else ''
                     body = ''
                     logutil.log(' '.join(['[', str(ssid), ']', url]), 'white')
-                    serverutil.wshttphandler.sendresponse(self, ssid, url, body)
+                    serverutil.wshttphandler.sendresponse(
+                        self, ssid, url, body)
 
                 def POST(self):
                     ''' 
@@ -2921,11 +3264,16 @@ class server():
                     url = self.path
                     ssidattr = 'PHPSESSID'
                     cookies = self.getcookies()
-                    ssid = str(cookies[ssidattr])[str(cookies[ssidattr]).find(ssidattr) + len(ssidattr) + 1:] if ssidattr in cookies else ''
+                    ssid = str(cookies[ssidattr]
+                               )[str(cookies[ssidattr]).find(ssidattr) +
+                                 len(ssidattr) +
+                                 1:] if ssidattr in cookies else ''
                     bodylen = int(self.headers.get('Content-Length') or 0)
-                    body = jsonutil.parse(zl.decompress(self.rfile.read(bodylen)))
+                    body = jsonutil.parse(
+                        zl.decompress(self.rfile.read(bodylen)))
                     logutil.log(' '.join(['[', str(ssid), ']', url]), 'white')
-                    serverutil.wshttphandler.sendresponse(self, ssid, url, body)
+                    serverutil.wshttphandler.sendresponse(
+                        self, ssid, url, body)
 
                 def handle(self):
                     ''' 
@@ -2954,7 +3302,8 @@ class server():
                         return
                     response = self.make_handshake_response(key)
                     with self._send_lock:
-                        self.handshake_done = self.request.send(response.encode())
+                        self.handshake_done = self.request.send(
+                            response.encode())
                     self.valid_client = True
                     self.server._new_client_(self)
 
@@ -2993,18 +3342,16 @@ class server():
                         if not self.raw_requestline:
                             self.close_connection = True
                             return
-                        self.headers = hcl.parse_headers(self.rfile, self.MessageClass)
+                        self.headers = hcl.parse_headers(
+                            self.rfile, self.MessageClass)
                     except hcl.LineTooLong as err:
                         self.send_error(
                             h.HTTPStatus.REQUEST_HEADER_FIELDS_TOO_LARGE,
-                            'Line too long',
-                            str(err))
+                            'Line too long', str(err))
                     except hcl.HTTPException as err:
                         self.send_error(
                             h.HTTPStatus.REQUEST_HEADER_FIELDS_TOO_LARGE,
-                            'Too many headers',
-                            str(err)
-                        )
+                            'Too many headers', str(err))
 
                 def parse_request(self):
                     ''' 
@@ -3029,18 +3376,21 @@ class server():
                             version_number = base_version_number.split('.')
                             if len(version_number) != 2:
                                 raise ValueError
-                            version_number = int(version_number[0]), int(version_number[1])
+                            version_number = int(version_number[0]), int(
+                                version_number[1])
                         except (ValueError, IndexError):
                             self.send_error(
                                 h.HTTPStatus.BAD_REQUEST,
                                 'Bad request version (%r)' % version)
                             return False
-                        if version_number >= (1, 1) and self.protocol_version >= 'HTTP/1.1':
+                        if version_number >= (
+                                1, 1) and self.protocol_version >= 'HTTP/1.1':
                             self.close_connection = False
                         if version_number >= (2, 0):
                             self.send_error(
                                 h.HTTPStatus.HTTP_VERSION_NOT_SUPPORTED,
-                                'Invalid HTTP version (%s)' % base_version_number)
+                                'Invalid HTTP version (%s)' %
+                                base_version_number)
                             return False
                         self.request_version = version
                     if not 2 <= len(words) <= 3:
@@ -3060,13 +3410,13 @@ class server():
                     conntype = self.headers.get('Connection', '')
                     if conntype.lower() == 'close':
                         self.close_connection = True
-                    elif (conntype.lower() == 'keep-alive' and
-                          self.protocol_version >= 'HTTP/1.1'):
+                    elif (conntype.lower() == 'keep-alive'
+                          and self.protocol_version >= 'HTTP/1.1'):
                         self.close_connection = False
                     expect = self.headers.get('Expect', '')
-                    if (expect.lower() == '100-continue' and
-                            self.protocol_version >= 'HTTP/1.1' and
-                            self.request_version >= 'HTTP/1.1'):
+                    if (expect.lower() == '100-continue'
+                            and self.protocol_version >= 'HTTP/1.1'
+                            and self.request_version >= 'HTTP/1.1'):
                         if not self.handle_expect_100():
                             return False
                     return True
@@ -3098,6 +3448,7 @@ class server():
 
         ################################****################################
         class taskutil:
+
             class loopholder:
                 pool = []
                 tid = 0
@@ -3114,21 +3465,28 @@ class server():
                 pass
 
             @staticmethod
-            def setdelay(time = 1e-6, func = None, args = ()):
-                timer = th.Timer(interval = time, function = func, args = args)
+            def setdelay(time=1e-6, func=None, args=()):
+                timer = th.Timer(interval=time, function=func, args=args)
                 timer.start()
 
             @staticmethod
-            def setasync(func = None, args = ()):
-                task = th.Thread(target = func, args = args)
+            def setasync(func=None, args=()):
+                task = th.Thread(target=func, args=args)
                 task.start()
 
             @staticmethod
-            def setloop(time = 1e-6, func = None, args = (), looper = None):
+            def setloop(time=1e-6, func=None, args=(), looper=None):
                 if not looper:
                     looper = taskutil.loopholder()
                 if looper.running:
-                    timer = th.Timer(interval = time, function = taskutil.setloop, args = (time, func, args, looper, ))
+                    timer = th.Timer(interval=time,
+                                     function=taskutil.setloop,
+                                     args=(
+                                         time,
+                                         func,
+                                         args,
+                                         looper,
+                                     ))
                     timer.start()
                 func(*args)
                 return looper.tid
@@ -3144,6 +3502,7 @@ class server():
 
         ################################****################################
         class timeutil:
+
             @staticmethod
             def init():
                 pass
@@ -3173,13 +3532,8 @@ class server():
             name = None
             version = None
             zh_cn = [
-                'https://sns.oddba.cn',
-                '',
-                '本作品完全免费',
-                '禁止用于商业用途',
-                '',
-                '当前版本无技术支持',
-                '请自行承担使用风险'
+                'https://sns.oddba.cn', '', '本作品完全免费', '禁止用于商业用途', '',
+                '当前版本无技术支持', '请自行承担使用风险'
             ]
 
             @staticmethod
@@ -3189,11 +3543,15 @@ class server():
 
             @staticmethod
             def setinfo():
-                ca.init(autoreset = True)
+                ca.init(autoreset=True)
                 watermarkutil.name = 'SPT-iDk Python'
                 watermarkutil.version = '1.0.0'
-                watermarkutil.zh_cn.insert(0, ' '.join([watermarkutil.name, watermarkutil.version]))
-                sys.stdout.write(' '.join(['\x1b]2;', watermarkutil.name, watermarkutil.version, '\x07']))
+                watermarkutil.zh_cn.insert(
+                    0, ' '.join([watermarkutil.name, watermarkutil.version]))
+                sys.stdout.write(' '.join([
+                    '\x1b]2;', watermarkutil.name, watermarkutil.version,
+                    '\x07'
+                ]))
                 sys.stdout.write('\u001B[2J\u001B[0;0f')
                 sys.stdout.flush()
 
@@ -3225,7 +3583,9 @@ class server():
                         length += 2
                 return length
 
+
 class main:
+
     @staticmethod
     def init():
         main.alias()
@@ -3244,7 +3604,7 @@ class main:
         dynamicroutes = server.bindings.dynamicroutes
         serverresponse = server.bindings.serverresponse
         ################################****################################
-        global botcallbacks, bundlecallbacks, configcallbacks, customizationcallbacks, databasecallbacks, dialoguecallbacks, gamecallbacks, handbookcallbacks, healthcallbacks, hideoutcallbacks, httpcallbacks, inraidcallbacks, insurancecallbacks, inventorycallbacks, itemeventcallbacks, launchercallbacks, locationcallbacks, matchcallbacks, notecallbacks, notifiercallbacks, presetbuildcallbacks, presetcallbacks, profilecallbacks, questcallbacks, ragfaircallbacks, repaircallbacks, savecallbacks, tradecallbacks, tradercallbacks, weathercallbacks, wishlistcallbacks 
+        global botcallbacks, bundlecallbacks, configcallbacks, customizationcallbacks, databasecallbacks, dialoguecallbacks, gamecallbacks, handbookcallbacks, healthcallbacks, hideoutcallbacks, httpcallbacks, inraidcallbacks, insurancecallbacks, inventorycallbacks, itemeventcallbacks, launchercallbacks, locationcallbacks, matchcallbacks, notecallbacks, notifiercallbacks, presetbuildcallbacks, presetcallbacks, profilecallbacks, questcallbacks, ragfaircallbacks, repaircallbacks, savecallbacks, tradecallbacks, tradercallbacks, weathercallbacks, wishlistcallbacks
         botcallbacks = server.callbacks.botcallbacks
         bundlecallbacks = server.callbacks.bundlecallbacks
         configcallbacks = server.callbacks.configcallbacks
@@ -3498,6 +3858,7 @@ class main:
         watermarkutil.init()
         initializer.init()
         modloader.init()
+
 
 if __name__ == '__main__':
     main.init()
