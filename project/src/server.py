@@ -27,7 +27,7 @@ import zlib as zl
 class server():
 
     class bindings:
-        ################################****################################
+
         class initializefunctions:
 
             @staticmethod
@@ -47,7 +47,6 @@ class server():
                     'traders': tradercallbacks.init,
                 }
 
-        ################################****################################
         class updatefunctions:
 
             @staticmethod
@@ -65,7 +64,6 @@ class server():
                     'save': savecallbacks.update
                 }
 
-        ################################****################################
         class saveinitfunctions:
 
             @staticmethod
@@ -81,7 +79,6 @@ class server():
                     'profile': profilecallbacks.init
                 }
 
-        ################################****################################
         class staticroutes:
 
             @staticmethod
@@ -120,7 +117,6 @@ class server():
                     }
                 }
 
-        ################################****################################
         class dynamicroutes:
 
             @staticmethod
@@ -144,7 +140,6 @@ class server():
                     }
                 }
 
-        ################################****################################
         class serverresponse:
 
             @staticmethod
@@ -155,7 +150,6 @@ class server():
             def getresponses():
                 return {'IMAGE': httpcallbacks.sendimage}
 
-        ################################****################################
         class itemevents:
 
             @staticmethod
@@ -310,21 +304,19 @@ class server():
                 }
 
     class callbacks:
-        ################################****################################
+
         class botcallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class bundlecallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class configcallbacks:
 
             @staticmethod
@@ -346,21 +338,18 @@ class server():
                 traderconfig.init()
                 weatherconfig.init()
 
-        ################################****################################
         class customizationcallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class databasecallbacks:
 
             @staticmethod
             def init():
                 databaseutil.init()
 
-        ################################****################################
         class dialoguecallbacks:
 
             @staticmethod
@@ -370,28 +359,24 @@ class server():
             def update(interval):
                 return True
 
-        ################################****################################
         class gamecallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class handbookcallbacks:
 
             @staticmethod
             def init():
                 handbookcontroller.init()
 
-        ################################****################################
         class healthcallbacks:
 
             @staticmethod
             def init(ssid):
                 healthcontroller.init(ssid)
 
-        ################################****################################
         class hideoutcallbacks:
 
             @staticmethod
@@ -403,7 +388,6 @@ class server():
                     return False
                 return True
 
-        ################################****################################
         class httpcallbacks:
 
             @staticmethod
@@ -421,14 +405,12 @@ class server():
             def getimage(ssid, url, body, result, resp):
                 return imagerouter.getimage(ssid, url, body, result, resp)
 
-        ################################****################################
         class inraidcallbacks:
 
             @staticmethod
             def init(ssid):
                 inraidcontroller.init(ssid)
 
-        ################################****################################
         class insurancecallbacks:
 
             @staticmethod
@@ -440,21 +422,18 @@ class server():
                     return False
                 return True
 
-        ################################****################################
         class inventorycallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class itemeventcallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class launchercallbacks:
 
             @staticmethod
@@ -512,70 +491,60 @@ class server():
             def ping(ssid, url, body, result, resp):
                 pass
 
-        ################################****################################
         class locationcallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class classname:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class matchcallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class notecallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class notifiercallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class presetbuildcallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class presetcallbacks:
 
             @staticmethod
             def init():
                 presetcontroller.init()
 
-        ################################****################################
         class profilecallbacks:
 
             @staticmethod
             def init(ssid):
                 profilecontroller.init(ssid)
 
-        ################################****################################
         class questcallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class ragfaircallbacks:
 
             @staticmethod
@@ -585,14 +554,12 @@ class server():
             def update(interval):
                 return True
 
-        ################################****################################
         class repaircallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class savecallbacks:
 
             @staticmethod
@@ -604,14 +571,12 @@ class server():
                     return False
                 return saveserver.save()
 
-        ################################****################################
         class tradecallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class tradercallbacks:
 
             @staticmethod
@@ -621,14 +586,12 @@ class server():
             def update(interval):
                 return True
 
-        ################################****################################
         class weathercallbacks:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class wishlistcallbacks:
 
             @staticmethod
@@ -636,7 +599,7 @@ class server():
                 pass
 
     class configs:
-        ################################****################################
+
         class botconfig:
             presetBatch = {}
             bosses = []
@@ -786,7 +749,6 @@ class server():
                 botconfig.showTypeInNickname = False
                 botconfig.maxBotCap = 20
 
-        ################################****################################
         class healthconfig:
             healthMultipliers = {}
             save = {}
@@ -796,7 +758,6 @@ class server():
                 healthconfig.healthMultipliers = {'death': 0.3, 'blacked': 0.1}
                 healthconfig.save = {'health': True, 'effects': True}
 
-        ################################****################################
         class hideoutconfig:
             runInterval = None
 
@@ -804,7 +765,6 @@ class server():
             def init():
                 hideoutconfig.runInterval = 1
 
-        ################################****################################
         class httpconfig:
             ip = None
             port = None
@@ -814,7 +774,6 @@ class server():
                 httpconfig.ip = '127.0.0.1'
                 httpconfig.port = 6969
 
-        ################################****################################
         class inraidconfig:
             MIAOnRaidEnd = None
             raidMenuSettings = {}
@@ -840,7 +799,6 @@ class server():
                 inraidconfig.carExtractBaseStandingGain = 0.25
                 inraidconfig.scavExtractGain = 0.01
 
-        ################################****################################
         class insuranceconfig:
             insuranceMultiplier = {}
             returnChance = None
@@ -855,7 +813,6 @@ class server():
                 insuranceconfig.returnChance = 80
                 insuranceconfig.runInterval = 1
 
-        ################################****################################
         class inventoryconfig:
             newItemsMarkedFound = None
 
@@ -863,7 +820,6 @@ class server():
             def init():
                 inventoryconfig.newItemsMarkedFound = False
 
-        ################################****################################
         class locationconfig:
             allowLootOverlay = None
             limits = None
@@ -890,7 +846,6 @@ class server():
                     'town': 0
                 }
 
-        ################################****################################
         class matchconfig:
             enabled = None
 
@@ -898,7 +853,6 @@ class server():
             def init():
                 matchconfig.enabled = False
 
-        ################################****################################
         class projectconfig:
             projectVersion = None
             projectName = None
@@ -908,7 +862,6 @@ class server():
                 projectconfig.projectVersion = '1.0.0'
                 projectconfig.projectName = 'SPT-iDk Python'
 
-        ################################****################################
         class questconfig:
             redeemTime = None
             repeatableQuests = None
@@ -1061,7 +1014,6 @@ class server():
                     }
                 ]
 
-        ################################****################################
         class ragfairconfig:
             sell = None
             traders = None
@@ -1165,7 +1117,6 @@ class server():
                     }
                 }
 
-        ################################****################################
         class repairconfig:
             priceMultiplier = None
 
@@ -1173,7 +1124,6 @@ class server():
             def init():
                 repairconfig.priceMultiplier = 1
 
-        ################################****################################
         class saveconfig:
             runInterval = None
 
@@ -1181,7 +1131,6 @@ class server():
             def init():
                 saveconfig.runInterval = 1
 
-        ################################****################################
         class traderconfig:
             updateTime = None
             fenceAssortSize = None
@@ -1205,7 +1154,6 @@ class server():
                     '5447bedf4bdc2d87278b4568'
                 ]
 
-        ################################****################################
         class weatherconfig:
             acceleration = None
             weather = {}
@@ -1253,21 +1201,19 @@ class server():
                 }
 
     class controllers:
-        ################################****################################
+
         class botcontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class customizationcontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class dialoguecontroller:
 
             @staticmethod
@@ -1278,14 +1224,12 @@ class server():
             def adddialoguemessage(dialogueid, message, ssid, items):
                 pass
 
-        ################################****################################
         class gamecontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class handbookcontroller:
             lookup = {}
 
@@ -1332,7 +1276,6 @@ class server():
                     return handbookcontroller.lookup['items']['byId'][id]
                 return 1
 
-        ################################****################################
         class healthcontroller:
 
             @staticmethod
@@ -1362,14 +1305,12 @@ class server():
                         }
                     }
 
-        ################################****################################
         class hideoutcontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class inraidcontroller:
 
             @staticmethod
@@ -1380,21 +1321,18 @@ class server():
                         'character': 'none'
                     }
 
-        ################################****################################
         class insurancecontroller:
 
             def init(ssid):
                 if not 'insurance' in saveserver.profiles[ssid]:
                     saveserver.profiles[ssid]['insurance'] = []
 
-        ################################****################################
         class inventorycontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class launchercontroller:
 
             @staticmethod
@@ -1437,35 +1375,30 @@ class server():
                     return saveserver.profiles[ssid]['info']
                 return None
 
-        ################################****################################
         class locationcontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class matchcontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class notecontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class notifiercontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class paymentcontroller:
 
             @staticmethod
@@ -1484,21 +1417,18 @@ class server():
                 return round(price /
                              handbookcontroller.gettemplateprice(currency))
 
-        ################################****################################
         class playercontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class presetbuildcontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class presetcontroller:
             lookup = {}
 
@@ -1530,7 +1460,6 @@ class server():
                         databaseserver.tables['globals']['ItemPresets'][id])
                 return presets
 
-        ################################****################################
         class profilecontroller:
 
             @staticmethod
@@ -1570,14 +1499,12 @@ class server():
                         return saveserver.profiles[ssid]['characters']['pmc']
                 return None
 
-        ################################****################################
         class questcontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class ragfaircontroller:
 
             @staticmethod
@@ -1598,42 +1525,36 @@ class server():
                 dialoguecontroller.adddialoguemessage(
                     '5ac3b934156ae10c4430e83c', message, ssid, items)
 
-        ################################****################################
         class repaircontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class repeatablequestcontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class tradecontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class tradercontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class weathercontroller:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class wishlistcontroller:
 
             @staticmethod
@@ -1641,21 +1562,19 @@ class server():
                 pass
 
     class generators:
-        ################################****################################
+
         class botgenerator:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class locationgenerator:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class pmclootgenerator:
 
             @staticmethod
@@ -1663,28 +1582,25 @@ class server():
                 pass
 
     class helpers:
-        ################################****################################
+
         class containerhelper:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class durabilitylimitshelper:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class inventoryhelper:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class itemhelper:
 
             @staticmethod
@@ -1851,21 +1767,18 @@ class server():
                         result = 0.01
                 return result
 
-        ################################****################################
         class questhelper:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class traderhelper:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class utilityhelper:
 
             @staticmethod
@@ -1873,14 +1786,13 @@ class server():
                 pass
 
     class loaders:
-        ################################****################################
+
         class bundleloader:
 
             @staticmethod
             def init():
                 pass
 
-        ################################****################################
         class modloader:
             moddir = 'user/mods/'
             infofile = 'modinfo.json'
@@ -1974,7 +1886,7 @@ class server():
                 return ''.join([modloader.moddir, mod, '/'])
 
     class routers:
-        ################################****################################
+
         class httprouter:
             onstatic = {}
             ondynamic = {}
@@ -2004,7 +1916,6 @@ class server():
                                     ssid, url, body, result, resp)
                 return result
 
-        ################################****################################
         class imagerouter:
             onroute = {}
 
@@ -2026,7 +1937,6 @@ class server():
             def getimage(ssid, url, body, result, resp):
                 return 'IMAGE'
 
-        ################################****################################
         class itemeventrouter:
             onevent = {}
             result = {'warnings': [], 'profileChanges': {}}
@@ -2071,7 +1981,7 @@ class server():
                 }
 
     class servers:
-        ################################****################################
+
         class databaseserver:
             tables = {}
 
@@ -2079,7 +1989,6 @@ class server():
             def init():
                 pass
 
-        ################################****################################
         class httpserver:
             onrespond = {}
             wspinghandler = []
@@ -2119,7 +2028,6 @@ class server():
                     ['http://', hostandport[0], ':',
                      str(hostandport[1])])
 
-        ################################****################################
         class ragfairserver:
             offers = []
             exipredoffers = []
@@ -2709,7 +2617,6 @@ class server():
                 del ragfairserver.offers[index]
                 return itemeventrouter.getresult(profile['aid'])
 
-        ################################****################################
         class saveserver:
             profilesdir = 'user/profiles/'
             initfunctions = {}
@@ -2756,7 +2663,7 @@ class server():
                     filesystemutil.writefile(profile, jsonprofile)
 
     class utils:
-        ################################****################################
+
         class initializer:
             initfunctions = {}
             updfunctions = {}
@@ -2787,7 +2694,6 @@ class server():
                     if success == None and timesincelastrun % 300 == 0:
                         logutil.error(' '.join(['定时事件', function, '执行失败']))
 
-        ################################****################################
         class databaseutil:
             if len(sys.argv) == 1:
                 dbdir = 'Aki_Data/Server/'
@@ -2833,7 +2739,6 @@ class server():
                 result['/favicon.ico'] = ''.join([path, 'icon.ico'])
                 return result
 
-        ################################****################################
         class filesystemutil:
 
             @staticmethod
@@ -2896,7 +2801,6 @@ class server():
             def stripextension(path):
                 return os.path.splitext(path)[0]
 
-        ################################****################################
         class hashutil:
 
             @staticmethod
@@ -2913,7 +2817,6 @@ class server():
             def generatemd5(data):
                 return hl.md5(data.encode('utf-8')).hexdigest()
 
-        ################################****################################
         class httputil:
 
             @staticmethod
@@ -2966,7 +2869,6 @@ class server():
                 }]
                 return result
 
-        ################################****################################
         class jsonutil:
 
             @staticmethod
@@ -2988,7 +2890,6 @@ class server():
             def clone(data):
                 return cp.deepcopy(data)
 
-        ################################****################################
         class logutil:
             logfile = 'user/logs/server.log'
             frontcolor = {
@@ -3062,7 +2963,6 @@ class server():
             def warning(data):
                 logutil.log(' '.join(['[警告]', str(data)]), 'black', 'yellow')
 
-        ################################****################################
         class randomutil:
 
             @staticmethod
@@ -3093,7 +2993,6 @@ class server():
             def getdictvalue(dict):
                 return dict[randomutil.getdictkey(dict)]
 
-        ################################****################################
         class serverutil:
 
             class wshttpserver(hsv.HTTPServer, wsv.WebsocketServer):
@@ -3446,7 +3345,6 @@ class server():
                 def log_message(self, format, *args):
                     pass
 
-        ################################****################################
         class taskutil:
 
             class loopholder:
@@ -3500,7 +3398,6 @@ class server():
                     del taskutil.loopholder.pool[taskindex]
                     taskindex += 1
 
-        ################################****################################
         class timeutil:
 
             @staticmethod
@@ -3527,7 +3424,6 @@ class server():
             def formatdate(date):
                 return date.strftime('%Y-%m-%d')
 
-        ################################****################################
         class watermarkutil:
             name = None
             version = None
@@ -3594,7 +3490,7 @@ class main:
 
     @staticmethod
     def alias():
-        ################################****################################
+
         global initializefunctions, itemevents, updatefunctions, saveinitfunctions, staticroutes, dynamicroutes, serverresponse
         initializefunctions = server.bindings.initializefunctions
         itemevents = server.bindings.itemevents
@@ -3603,7 +3499,7 @@ class main:
         staticroutes = server.bindings.staticroutes
         dynamicroutes = server.bindings.dynamicroutes
         serverresponse = server.bindings.serverresponse
-        ################################****################################
+
         global botcallbacks, bundlecallbacks, configcallbacks, customizationcallbacks, databasecallbacks, dialoguecallbacks, gamecallbacks, handbookcallbacks, healthcallbacks, hideoutcallbacks, httpcallbacks, inraidcallbacks, insurancecallbacks, inventorycallbacks, itemeventcallbacks, launchercallbacks, locationcallbacks, matchcallbacks, notecallbacks, notifiercallbacks, presetbuildcallbacks, presetcallbacks, profilecallbacks, questcallbacks, ragfaircallbacks, repaircallbacks, savecallbacks, tradecallbacks, tradercallbacks, weathercallbacks, wishlistcallbacks
         botcallbacks = server.callbacks.botcallbacks
         bundlecallbacks = server.callbacks.bundlecallbacks
@@ -3636,7 +3532,7 @@ class main:
         tradercallbacks = server.callbacks.tradercallbacks
         weathercallbacks = server.callbacks.weathercallbacks
         wishlistcallbacks = server.callbacks.wishlistcallbacks
-        ################################****################################
+
         global botconfig, healthconfig, hideoutconfig, httpconfig, inraidconfig, insuranceconfig, inventoryconfig, locationconfig, matchconfig, projectconfig, questconfig, ragfairconfig, repairconfig, saveconfig, traderconfig, weatherconfig
         botconfig = server.configs.botconfig
         healthconfig = server.configs.healthconfig
@@ -3654,7 +3550,7 @@ class main:
         saveconfig = server.configs.saveconfig
         traderconfig = server.configs.traderconfig
         weatherconfig = server.configs.weatherconfig
-        ################################****################################
+
         global botcontroller, customizationcontroller, dialoguecontroller, gamecontroller, handbookcontroller, healthcontroller, hideoutcontroller, inraidcontroller, insurancecontroller, inventorycontroller, launchercontroller, locationcontroller, matchcontroller, notecontroller, notifiercontroller, paymentcontroller, playercontroller, presetbuildcontroller, presetcontroller, profilecontroller, questcontroller, ragfaircontroller, repaircontroller, repeatablequestcontroller, tradecontroller, tradercontroller, weathercontroller, wishlistcontroller
         botcontroller = server.controllers.botcontroller
         customizationcontroller = server.controllers.customizationcontroller
@@ -3684,12 +3580,12 @@ class main:
         tradercontroller = server.controllers.tradercontroller
         weathercontroller = server.controllers.weathercontroller
         wishlistcontroller = server.controllers.wishlistcontroller
-        ################################****################################
+
         global botgenerator, locationgenerator, pmclootgenerator
         botgenerator = server.generators.botgenerator
         locationgenerator = server.generators.locationgenerator
         pmclootgenerator = server.generators.pmclootgenerator
-        ################################****################################
+
         global containerhelper, durabilitylimitshelper, inventoryhelper, itemhelper, questhelper, traderhelper, utilityhelper
         containerhelper = server.helpers.containerhelper
         durabilitylimitshelper = server.helpers.durabilitylimitshelper
@@ -3698,22 +3594,22 @@ class main:
         questhelper = server.helpers.questhelper
         traderhelper = server.helpers.traderhelper
         utilityhelper = server.helpers.utilityhelper
-        ################################****################################
+
         global bundleloader, modloader
         bundleloader = server.loaders.bundleloader
         modloader = server.loaders.modloader
-        ################################****################################
+
         global httprouter, imagerouter, itemeventrouter
         httprouter = server.routers.httprouter
         imagerouter = server.routers.imagerouter
         itemeventrouter = server.routers.itemeventrouter
-        ################################****################################
+
         global databaseserver, httpserver, ragfairserver, saveserver
         databaseserver = server.servers.databaseserver
         httpserver = server.servers.httpserver
         ragfairserver = server.servers.ragfairserver
         saveserver = server.servers.saveserver
-        ################################****################################
+
         global initializer, databaseutil, filesystemutil, hashutil, httputil, jsonutil, logutil, randomutil, serverutil, taskutil, timeutil, watermarkutil
         initializer = server.utils.initializer
         databaseutil = server.utils.databaseutil
@@ -3730,14 +3626,14 @@ class main:
 
     @staticmethod
     def expose():
-        ################################****################################
+
         setattr(b, 'initializefunctions', initializefunctions)
         setattr(b, 'updatefunctions', updatefunctions)
         setattr(b, 'saveinitfunctions', saveinitfunctions)
         setattr(b, 'staticroutes', staticroutes)
         setattr(b, 'dynamicroutes', dynamicroutes)
         setattr(b, 'serverresponse', serverresponse)
-        ################################****################################
+
         setattr(b, 'botcallbacks', botcallbacks)
         setattr(b, 'bundlecallbacks', bundlecallbacks)
         setattr(b, 'configcallbacks', configcallbacks)
@@ -3769,7 +3665,7 @@ class main:
         setattr(b, 'tradercallbacks', tradercallbacks)
         setattr(b, 'weathercallbacks', weathercallbacks)
         setattr(b, 'wishlistcallbacks', wishlistcallbacks)
-        ################################****################################
+
         setattr(b, 'botconfig', botconfig)
         setattr(b, 'healthconfig', healthconfig)
         setattr(b, 'hideoutconfig', hideoutconfig)
@@ -3785,7 +3681,7 @@ class main:
         setattr(b, 'repairconfig', repairconfig)
         setattr(b, 'traderconfig', traderconfig)
         setattr(b, 'weatherconfig', weatherconfig)
-        ################################****################################
+
         setattr(b, 'botcontroller', botcontroller)
         setattr(b, 'customizationcontroller', customizationcontroller)
         setattr(b, 'dialoguecontroller', dialoguecontroller)
@@ -3814,11 +3710,11 @@ class main:
         setattr(b, 'tradercontroller', tradercontroller)
         setattr(b, 'weathercontroller', weathercontroller)
         setattr(b, 'wishlistcontroller', wishlistcontroller)
-        ################################****################################
+
         setattr(b, 'botgenerator', botgenerator)
         setattr(b, 'locationgenerator', locationgenerator)
         setattr(b, 'pmclootgenerator', pmclootgenerator)
-        ################################****################################
+
         setattr(b, 'containerhelper', containerhelper)
         setattr(b, 'durabilitylimitshelper', durabilitylimitshelper)
         setattr(b, 'inventoryhelper', inventoryhelper)
@@ -3826,19 +3722,19 @@ class main:
         setattr(b, 'questhelper', questhelper)
         setattr(b, 'traderhelper', traderhelper)
         setattr(b, 'utilityhelper', utilityhelper)
-        ################################****################################
+
         setattr(b, 'bundleloader', bundleloader)
         setattr(b, 'modloader', modloader)
-        ################################****################################
+
         setattr(b, 'httprouter', httprouter)
         setattr(b, 'imagerouter', imagerouter)
         setattr(b, 'itemeventrouter', itemeventrouter)
-        ################################****################################
+
         setattr(b, 'databaseserver', databaseserver)
         setattr(b, 'httpserver', httpserver)
         setattr(b, 'ragfairserver', ragfairserver)
         setattr(b, 'saveserver', saveserver)
-        ################################****################################
+
         setattr(b, 'initializer', initializer)
         setattr(b, 'databaseutil', databaseutil)
         setattr(b, 'filesystemutil', filesystemutil)
