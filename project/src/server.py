@@ -1249,7 +1249,8 @@ class server():
                         rewards['data'].append(item)
                         valid, template = itemhelper.getitem(item['_tpl'])
                         if 'StackSlots' in template['_props']:
-                            stackslotitems = itemhelper.generatestackslotitems(template, item['_id'])
+                            stackslotitems = itemhelper.generatestackslotitems(
+                                template, item['_id'])
                             for stackslotitem in stackslotitems:
                                 rewards['data'].append(stackslotitem)
                     dialogue['attachmentsNew'] += 1
@@ -1270,10 +1271,12 @@ class server():
                     dialoguemessage['systemData'] = message['systemData']
                 dialogue['messages'].append(dialoguemessage)
                 if message['type'] == 4 and 'ragfair' in message:
-                    offersoldmessage = notifiercontroller.createoffersoldnotification(dialoguemessage, message['ragfair'])
+                    offersoldmessage = notifiercontroller.createoffersoldnotification(
+                        dialoguemessage, message['ragfair'])
                     notifiercontroller.sendmessage(ssid, offersoldmessage)
                     dialoguemessage['type'] = 13
-                notificationmessage = notifiercontroller.createnewmessagenotification(dialoguemessage)
+                notificationmessage = notifiercontroller.createnewmessagenotification(
+                    dialoguemessage)
                 notifiercontroller.sendmessage(ssid, notificationmessage)
 
         class gamecontroller:
@@ -1561,7 +1564,7 @@ class server():
                 currlvl = profile['Info']['Level']
                 nextlvl = profilecontroller.getexpbylevel(currlvl + 1)
                 if currlvl == 0:
-                    prevexp = 0 
+                    prevexp = 0
                 else:
                     prevexp = profilecontroller.getexpbylevel(currlvl)
                 return {
