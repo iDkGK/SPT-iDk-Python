@@ -1,6 +1,12 @@
 # Server
-**SPT-AKI Server** rewritten in Python.
-AKA **SPT-iDk Python Server**
+**SPT-iDk Python Server**, **SPT-AKI Server** rewritten in Python.
+
+This project is currently based on **SPT-AKI Server 2.2.0**,
+
+And will not stay up-to-date until the work of rewriting is done.
+
+## Contributors Needed
+Contributors are urgently needed since I have very limited time to work on it.
 
 ## Requirements
 - Network
