@@ -1221,8 +1221,60 @@ class server():
                 pass
 
             @staticmethod
-            def adddialoguemessage(dialogueid, message, ssid, items):
-                pass
+            def adddialoguemessage(dialogueid, message, ssid, items=[]):
+                messageid = hashutil.generate()
+                dialogues = saveserver.profiles[ssid]['dialogues']
+                if not dialogueid in dialogues:
+                    dialogue = {
+                        '_id': dialogueid,
+                        'messages': [],
+                        'pinned': False,
+                        'new': 0,
+                        'attachmentsNew': 0
+                    }
+                else:
+                    dialogue = dialogues[dialogueid]
+                dialogue['new'] += 1
+                hasrewards = len(items) > 0
+                timestamp = timeutil.gettimestamp()
+                rewards = {}
+                if hasrewards:
+                    rewards['stash'] = hashutil.generate()
+                    rewards['data'] = []
+                    items = itemhelper.replaceids(items)
+                    for item in items:
+                        if not 'slotId' in item or item['slotId'] == 'hideout':
+                            item['parentId'] = rewards['stash']
+                            item['slotId'] = 'main'
+                        rewards['data'].append(item)
+                        valid, template = itemhelper.getitem(item['_tpl'])
+                        if 'StackSlots' in template['_props']:
+                            stackslotitems = itemhelper.generatestackslotitems(template, item['_id'])
+                            for stackslotitem in stackslotitems:
+                                rewards['data'].append(stackslotitem)
+                    dialogue['attachmentsNew'] += 1
+                dialoguemessage = {
+                    '_id': messageid,
+                    'uid': dialogueid,
+                    'type': message['type'],
+                    'dt': timestamp,
+                    'localDateTime': timestamp,
+                    'templateId': message['templateId'],
+                    'text': message['text'],
+                    'hasRewards': hasrewards,
+                    'rewardCollected': False,
+                    'items': items,
+                    'maxStorageTime': message['maxStorageTime']
+                }
+                if 'systemData' in message:
+                    dialoguemessage['systemData'] = message['systemData']
+                dialogue['messages'].append(dialoguemessage)
+                if message['type'] == 4 and 'ragfair' in message:
+                    offersoldmessage = notifiercontroller.createoffersoldnotification(dialoguemessage, message['ragfair'])
+                    notifiercontroller.sendmessage(ssid, offersoldmessage)
+                    dialoguemessage['type'] = 13
+                notificationmessage = notifiercontroller.createnewmessagenotification(dialoguemessage)
+                notifiercontroller.sendmessage(ssid, notificationmessage)
 
         class gamecontroller:
 
@@ -1280,8 +1332,9 @@ class server():
 
             @staticmethod
             def init(ssid):
-                if not 'vitality' in saveserver.profiles[ssid]:
-                    saveserver.profiles[ssid]['vitality'] = {
+                profile = saveserver.profiles[ssid]
+                if not 'vitality' in profile:
+                    profile['vitality'] = {
                         'health': {
                             'Hydration': 0,
                             'Energy': 0,
@@ -1315,8 +1368,9 @@ class server():
 
             @staticmethod
             def init(ssid):
-                if not 'inraid' in saveserver.profiles[ssid]:
-                    saveserver.profiles[ssid]['inraid'] = {
+                profile = saveserver.profiles[ssid]
+                if not 'inraid' in profile:
+                    profile['inraid'] = {
                         'location': 'none',
                         'character': 'none'
                     }
@@ -1324,8 +1378,9 @@ class server():
         class insurancecontroller:
 
             def init(ssid):
-                if not 'insurance' in saveserver.profiles[ssid]:
-                    saveserver.profiles[ssid]['insurance'] = []
+                profile = saveserver.profiles[ssid]
+                if not 'insurance' in profile:
+                    profile['insurance'] = []
 
         class inventorycontroller:
 
@@ -1362,10 +1417,9 @@ class server():
             @staticmethod
             def login(body):
                 for ssid in saveserver.profiles:
-                    if body['username'] == saveserver.profiles[ssid]['info'][
-                            'username'] and body[
-                                'password'] == saveserver.profiles[ssid][
-                                    'info']['password']:
+                    profile = saveserver.profiles[ssid]
+                    if body['username'] == profile['info']['username'] and body[
+                            'password'] == profile['info']['password']:
                         return ssid
                 return ''
 
@@ -1398,6 +1452,28 @@ class server():
             @staticmethod
             def init():
                 pass
+
+            @staticmethod
+            def sendmessage(ssid, message):
+                pass
+
+            @staticmethod
+            def createoffersoldnotification(dialoguemessage, ragfairdata):
+                return {
+                    'type': 'RagfairOfferSold',
+                    'eventId': dialoguemessage['_id'],
+                    'dialogId': dialoguemessage['uid'],
+                    **ragfairdata
+                }
+
+            @staticmethod
+            def createnewmessagenotification(dialoguemessage):
+                return {
+                    'type': 'new_message',
+                    'eventId': dialoguemessage['_id'],
+                    'dialogueId': dialoguemessage['uid'],
+                    'message': dialoguemessage
+                }
 
         class paymentcontroller:
 
@@ -1464,39 +1540,69 @@ class server():
 
             @staticmethod
             def init(ssid):
-                if not 'characters' in saveserver.profiles[ssid]:
-                    saveserver.profiles[ssid]['characters'] = {
-                        'pmc': {},
-                        'scav': {}
-                    }
+                profile = saveserver.profiles[ssid]
+                if not 'characters' in profile:
+                    profile['characters'] = {'pmc': {}, 'scav': {}}
 
             @staticmethod
             def getminiprofile(ssid):
-                maxlvl = len(databaseserver.tables['globals']['config']['exp']
-                             ['level']['exp_table']) - 1
+                profile = profilecontroller.getpmcprofilebyssid(ssid)
+                if not 'Info' in profile or not 'Level' in profile['Info']:
+                    return {
+                        'nickname': 'unknown',
+                        'side': 'unknown',
+                        'currlvl': 0,
+                        'currexp': 0,
+                        'prevexp': 0,
+                        'nextlvl': 0,
+                        'maxlvl': maxlvl
+                    }
+                maxlvl = profilecontroller.getmaxlevel()
+                currlvl = profile['Info']['Level']
+                nextlvl = profilecontroller.getexpbylevel(currlvl + 1)
+                if currlvl == 0:
+                    prevexp = 0 
+                else:
+                    prevexp = profilecontroller.getexpbylevel(currlvl)
                 return {
-                    'nickname': 'unknown',
-                    'side': 'unknown',
-                    'currlvl': 0,
-                    'currexp': 0,
-                    'prevexp': 0,
-                    'nextlvl': 0,
+                    'nickname': profile['Info']['Nickname'],
+                    'side': profile['Info']['Side'],
+                    'currlvl': currlvl,
+                    'currexp': profile['Info']['Experience'],
+                    'prevexp': prevexp,
+                    'nextlvl': nextlvl,
                     'maxlvl': maxlvl
                 }
 
             @staticmethod
-            def getpmcprofile(ssid):
+            def getmaxlevel():
+                return len(databaseserver.tables['globals']['config']['exp']
+                           ['level']['exp_table']) - 1
+
+            @staticmethod
+            def getexpbylevel(level):
+                maxlvl = profilecontroller.getmaxlevel()
+                exp = 0
+                if level > maxlvl:
+                    level = maxlvl
+                for i in range(0, level):
+                    exp += databaseserver.tables['globals']['config']['exp'][
+                        'level']['exp_table'][i]['exp']
+                return exp
+
+            @staticmethod
+            def getpmcprofilebyssid(ssid):
                 if not ssid in saveserver.profiles or not saveserver.profiles[
                         ssid]['characters']['pmc']:
                     return None
                 return saveserver.profiles[ssid]['characters']['pmc']
 
             @staticmethod
-            def getprofilebypmcid(pmcid):
+            def getpmcprofilebypmcid(pmcid):
                 for ssid in saveserver.profiles:
-                    if saveserver.profiles[ssid]['characters']['pmc'][
-                            '_id'] == pmcid:
-                        return saveserver.profiles[ssid]['characters']['pmc']
+                    profile = saveserver.profiles[ssid]
+                    if profile['characters']['pmc']['_id'] == pmcid:
+                        return profile['characters']['pmc']
                 return None
 
         class questcontroller:
@@ -1767,6 +1873,30 @@ class server():
                         result = 0.01
                 return result
 
+            @staticmethod
+            def replaceids(items):
+                return items
+
+            @staticmethod
+            def generatestackslotitems(item, parentid):
+                stackslotitems = []
+                for stackslot in item['_props']['StackSlots']:
+                    slotid = stackslot['_name']
+                    count = stackslot['_max_count']
+                    ammotpl = stackslot['_props']['filters'][0]['Filter'][0]
+                    stackslotitem = {
+                        "_id": hashutil.generate(),
+                        "_tpl": ammotpl,
+                        "parentId": parentid,
+                        "slotId": slotid,
+                        "location": 0,
+                        "upd": {
+                            "StackObjectsCount": count
+                        }
+                    }
+                    stackslotitems.append(stackslotitem)
+                return stackslotitems
+
         class questhelper:
 
             @staticmethod
@@ -1958,7 +2088,7 @@ class server():
 
             @staticmethod
             def resetresult(ssid):
-                profile = profilecontroller.getpmcprofile(ssid)
+                profile = profilecontroller.getpmcprofilebyssid(ssid)
                 itemeventrouter.result['warnings'] = []
                 itemeventrouter.result['profileChanges'][ssid] = {
                     '_id': ssid,
@@ -2062,13 +2192,15 @@ class server():
             @staticmethod
             def getlinkeditems(id):
                 if not id in ragfairserver.linkeditems:
-                    ragfairserver.linkeditems[id] = set()
+                    ragfairserver.linkeditems[id] = []
                 return ragfairserver.linkeditems[id]
 
             @staticmethod
             def applylinkeditems(item, items):
                 for linkeditemid in items:
-                    ragfairserver.getlinkeditems(linkeditemid).add(item['_id'])
+                    linkeditems = ragfairserver.getlinkeditems(linkeditemid)
+                    if not item['_id'] in linkeditems:
+                        linkeditems.append(item['_id'])
 
             @staticmethod
             def getfilters(item, slot):
@@ -2270,7 +2402,7 @@ class server():
 
             @staticmethod
             def isplayer(userid):
-                if profilecontroller.getpmcprofile(userid) != None:
+                if profilecontroller.getpmcprofilebyssid(userid) != None:
                     return True
                 return False
 
@@ -2418,15 +2550,14 @@ class server():
             @staticmethod
             def gettraderid(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc'][
-                        '_id']
+                    return profilecontroller.getpmcprofilebyssid(userid)['_id']
                 return userid
 
             @staticmethod
             def getmembertype(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc'][
-                        'Info']['AccountType']
+                    return profilecontroller.getpmcprofilebyssid(
+                        userid)['Info']['AccountType']
                 if ragfairserver.istrader(userid):
                     return 4
                 return 0
@@ -2434,8 +2565,8 @@ class server():
             @staticmethod
             def getnickname(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc'][
-                        'Info']['Nickname']
+                    return profilecontroller.getpmcprofilebyssid(
+                        userid)['Info']['Nickname']
                 if ragfairserver.istrader(userid):
                     return databaseserver.tables['traders'][userid]['base'][
                         'nickname']
@@ -2454,8 +2585,8 @@ class server():
             @staticmethod
             def getrating(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc'][
-                        'RagfairInfo']['rating']
+                    return profilecontroller.getpmcprofilebyssid(
+                        userid)['RagfairInfo']['rating']
                 if ragfairserver.istrader(userid):
                     return 1
                 return randomutil.getfloat(
@@ -2465,8 +2596,8 @@ class server():
             @staticmethod
             def getratinggrowing(userid):
                 if ragfairserver.isplayer(userid):
-                    return saveserver.profiles[userid]['characters']['pmc'][
-                        'RagfairInfo']['isRatingGrowing']
+                    return profilecontroller.getpmcprofilebyssid(
+                        userid)['RagfairInfo']['isRatingGrowing']
                 if ragfairserver.istrader(userid):
                     return True
                 return randomutil.getbool()
@@ -2543,12 +2674,14 @@ class server():
             @staticmethod
             def getrequireditems(tpl):
                 if not tpl in ragfairserver.requireditems:
-                    ragfairserver.requireditems[tpl] = set()
+                    ragfairserver.requireditems[tpl] = []
                 return ragfairserver.requireditems[tpl]
 
             @staticmethod
             def applyrequireditems(tpl, offer):
-                ragfairserver.getrequireditems(tpl).add(offer)
+                requireditems = ragfairserver.getrequireditems(tpl)
+                if not offer in requireditems:
+                    requireditems.append(offer)
 
             @staticmethod
             def isexpired(offer, time):
@@ -2588,7 +2721,7 @@ class server():
                 offercount = len(profile['RagfairInfo']['offers'])
                 if offercount == 0:
                     return
-                profile = profilecontroller.getprofilebypmcid(
+                profile = profilecontroller.getpmcprofilebypmcid(
                     offer['user']['id'])
                 for index in range(0, offercount + 1):
                     if index == offercount:
