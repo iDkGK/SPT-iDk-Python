@@ -10,7 +10,7 @@ Contributors are urgently needed since I have very limited time to work on it.
 
 ## Requirements
 - Network
-- Python >= 3.6
+- Python >= 3.6 (Best 3.10)
 - Visual Studio Code
 
 ## Setup
